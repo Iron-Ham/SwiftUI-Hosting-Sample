@@ -15,6 +15,12 @@
 		D025CF1C2BD03CEB007274D9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D025CF1B2BD03CEB007274D9 /* Base */; };
 		D025CF262BD041AE007274D9 /* SimpleHostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF252BD041AE007274D9 /* SimpleHostedViewController.swift */; };
 		D025CF282BD041BC007274D9 /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF272BD041BC007274D9 /* HostingView.swift */; };
+		D025CF2B2BD04B5D007274D9 /* UserColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF2A2BD04B5D007274D9 /* UserColorView.swift */; };
+		D025CF2D2BD04E37007274D9 /* DynamicSwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF2C2BD04E37007274D9 /* DynamicSwiftUIViewController.swift */; };
+		D025CF302BD0553B007274D9 /* UserColorView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF2F2BD0553B007274D9 /* UserColorView2.swift */; };
+		D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF312BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift */; };
+		D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF342BD055D1007274D9 /* IconPickerProvider.swift */; };
+		D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF362BD055D9007274D9 /* ColorPickerProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		D025CF1D2BD03CEB007274D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D025CF252BD041AE007274D9 /* SimpleHostedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHostedViewController.swift; sourceTree = "<group>"; };
 		D025CF272BD041BC007274D9 /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
+		D025CF2A2BD04B5D007274D9 /* UserColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserColorView.swift; sourceTree = "<group>"; };
+		D025CF2C2BD04E37007274D9 /* DynamicSwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSwiftUIViewController.swift; sourceTree = "<group>"; };
+		D025CF2F2BD0553B007274D9 /* UserColorView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserColorView2.swift; sourceTree = "<group>"; };
+		D025CF312BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSwiftUIObservableObject.swift; sourceTree = "<group>"; };
+		D025CF342BD055D1007274D9 /* IconPickerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerProvider.swift; sourceTree = "<group>"; };
+		D025CF362BD055D9007274D9 /* ColorPickerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +88,7 @@
 		D025CF232BD04188007274D9 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				D025CF332BD055B8007274D9 /* Dynamic */,
 				D025CF242BD0419A007274D9 /* Static SwiftUI View Within a UIView */,
 			);
 			path = Examples;
@@ -87,6 +100,35 @@
 				D025CF252BD041AE007274D9 /* SimpleHostedViewController.swift */,
 			);
 			path = "Static SwiftUI View Within a UIView";
+			sourceTree = "<group>";
+		};
+		D025CF292BD04B34007274D9 /* Dynamic SwiftUI View */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF2A2BD04B5D007274D9 /* UserColorView.swift */,
+				D025CF2C2BD04E37007274D9 /* DynamicSwiftUIViewController.swift */,
+			);
+			path = "Dynamic SwiftUI View";
+			sourceTree = "<group>";
+		};
+		D025CF2E2BD0551F007274D9 /* Dynamic SwiftUI View - ObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF2F2BD0553B007274D9 /* UserColorView2.swift */,
+				D025CF312BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift */,
+			);
+			path = "Dynamic SwiftUI View - ObservableObject";
+			sourceTree = "<group>";
+		};
+		D025CF332BD055B8007274D9 /* Dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF2E2BD0551F007274D9 /* Dynamic SwiftUI View - ObservableObject */,
+				D025CF292BD04B34007274D9 /* Dynamic SwiftUI View */,
+				D025CF342BD055D1007274D9 /* IconPickerProvider.swift */,
+				D025CF362BD055D9007274D9 /* ColorPickerProvider.swift */,
+			);
+			path = Dynamic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +204,13 @@
 			files = (
 				D025CF142BD03CE9007274D9 /* MainMenuViewController.swift in Sources */,
 				D025CF102BD03CE9007274D9 /* AppDelegate.swift in Sources */,
+				D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */,
+				D025CF302BD0553B007274D9 /* UserColorView2.swift in Sources */,
+				D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */,
+				D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift in Sources */,
 				D025CF262BD041AE007274D9 /* SimpleHostedViewController.swift in Sources */,
+				D025CF2D2BD04E37007274D9 /* DynamicSwiftUIViewController.swift in Sources */,
+				D025CF2B2BD04B5D007274D9 /* UserColorView.swift in Sources */,
 				D025CF282BD041BC007274D9 /* HostingView.swift in Sources */,
 				D025CF122BD03CE9007274D9 /* SceneDelegate.swift in Sources */,
 			);

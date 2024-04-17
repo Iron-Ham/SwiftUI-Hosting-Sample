@@ -8,6 +8,8 @@ private struct MenuItem {
 
 private enum Examples: CaseIterable {
   case simpleHostedSwiftUIViews
+  case dynamicSwiftUIViewController
+  case dynamicObservableObject
 
   var item: MenuItem {
     switch self {
@@ -16,6 +18,18 @@ private enum Examples: CaseIterable {
         title: "Static SwiftUI View within a UIView",
         subtitle: "Use a HostingView to nest a SwiftUI element within a UIView",
         viewControllerProvider: { SimpleHostedViewController() }
+      )
+    case .dynamicSwiftUIViewController:
+      return MenuItem(
+        title: "Dynamic SwiftUI View within a UIViewController",
+        subtitle: "Uses the @Observable macro to minimize view updates",
+        viewControllerProvider: { DynamicSwiftUIViewController() } // DynamicSwiftUIViewObservableObjectController
+      )
+    case .dynamicObservableObject:
+      return MenuItem(
+        title: "Dynamic SwiftUI View within a UIViewController",
+        subtitle: "Uses an ObservableObject",
+        viewControllerProvider: { DynamicSwiftUIViewObservableObjectController() }
       )
     }
   }
