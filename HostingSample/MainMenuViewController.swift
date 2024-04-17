@@ -1,12 +1,53 @@
 import UIKit
 
-private struct MenuItem {
+private struct MenuItem: Identifiable, Hashable {
   var title: String
   var subtitle: String
+
+  @IgnoreHashable
   var viewControllerProvider: () -> UIViewController
+
+  var id: String { title }
 }
 
-private enum Examples: CaseIterable {
+private enum Section: CaseIterable {
+  case basic
+
+  var title: String {
+    switch self {
+    case .basic:
+      "Simple examples"
+    }
+  }
+
+  var examples: [any Example] {
+    switch self {
+    case .basic:
+      SimpleExample.allCases
+    }
+  }
+
+  var item: MenuItem {
+    switch self {
+    case .basic:
+      MenuItem(
+        title: title,
+        subtitle: "",
+        viewControllerProvider: { UIViewController() }
+      )
+    }
+  }
+
+  static func item(for indexPath: IndexPath) -> MenuItem {
+    Section.allCases[indexPath.section].examples[indexPath.row].item
+  }
+}
+
+private protocol Example: CaseIterable {
+  var item: MenuItem { get }
+}
+
+private enum SimpleExample: Example {
   case simpleHostedSwiftUIViews
   case dynamicSwiftUIViewController
   case dynamicObservableObject
@@ -43,22 +84,48 @@ private enum Examples: CaseIterable {
 }
 
 final class MainMenuViewController: UIViewController {
-  private typealias Registration = UICollectionView.CellRegistration
+  private typealias CellRegistration = UICollectionView.CellRegistration
+  private typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration
 
   private lazy var layout = UICollectionViewCompositionalLayout { _, environment in
-    let listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+    listConfiguration.headerMode = .firstItemInSection
     return NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: environment)
   }
 
   private lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.dataSource = self
     collectionView.delegate = self
     return collectionView
   }()
 
-  private var cellRegistration: Registration<UICollectionViewListCell, MenuItem> = {
-    .init { cell, _, item in
+  private var dataSource: UICollectionViewDiffableDataSource<Section, MenuItem>!
+  private let sections = Section.allCases
+
+  override func loadView() {
+    view = collectionView
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configureDataSource()
+
+    var snapshot = NSDiffableDataSourceSnapshot<Section, MenuItem>()
+    snapshot.appendSections(sections)
+    dataSource.apply(snapshot, animatingDifferences: false)
+    for section in sections {
+      var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<MenuItem>()
+      let headerItem = section.item
+      sectionSnapshot.append([headerItem])
+      let items = section.examples.map(\.item)
+      sectionSnapshot.append(items, to: headerItem)
+      sectionSnapshot.expand([headerItem])
+      dataSource.apply(sectionSnapshot, to: section)
+    }
+  }
+
+  private func configureDataSource() {
+    let cellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { cell, _, item in
       cell.accessories = [.disclosureIndicator()]
       var content = cell.defaultContentConfiguration()
       content.text = item.title
@@ -66,32 +133,33 @@ final class MainMenuViewController: UIViewController {
       content.secondaryTextProperties.color = .secondaryLabel
       cell.contentConfiguration = content
     }
-  }()
 
-  private let examples = Examples.allCases.map(\.item)
+    let headerRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { cell, indexPath, _ in
+      let section = self.sections[indexPath.section]
+      var content = cell.defaultContentConfiguration()
+      content.text = section.title
+      cell.contentConfiguration = content
+      cell.accessories = [.outlineDisclosure()]
+    }
 
-  override func loadView() {
-    view = collectionView
-  }
-}
-
-extension MainMenuViewController: UICollectionViewDataSource {
-  func collectionView(
-    _ collectionView: UICollectionView,
-    numberOfItemsInSection section: Int
-  ) -> Int {
-    examples.count
-  }
-
-  func collectionView(
-    _ collectionView: UICollectionView,
-    cellForItemAt indexPath: IndexPath
-  ) -> UICollectionViewCell {
-    collectionView.dequeueConfiguredReusableCell(
-      using: cellRegistration,
-      for: indexPath,
-      item: examples[indexPath.item]
-    )
+    let dataSource = UICollectionViewDiffableDataSource<Section, MenuItem>(
+      collectionView: collectionView
+    ) { collectionView, indexPath, item in
+      if indexPath.row == 0 {
+        collectionView.dequeueConfiguredReusableCell(
+          using: headerRegistration,
+          for: indexPath,
+          item: item
+        )
+      } else {
+        collectionView.dequeueConfiguredReusableCell(
+          using: cellRegistration,
+          for: indexPath,
+          item: item
+        )
+      }
+    }
+    self.dataSource = dataSource
   }
 }
 
@@ -101,8 +169,25 @@ extension MainMenuViewController: UICollectionViewDelegate {
     performPrimaryActionForItemAt indexPath: IndexPath
   ) {
     navigationController?.pushViewController(
-      examples[indexPath.item].viewControllerProvider(),
+      Section.item(for: indexPath).viewControllerProvider(),
       animated: true
     )
   }
+}
+
+
+@propertyWrapper
+struct IgnoreEquatable<Wrapped>: Equatable {
+  var wrappedValue: Wrapped
+
+  static func == (lhs: IgnoreEquatable<Wrapped>, rhs: IgnoreEquatable<Wrapped>) -> Bool {
+    true
+  }
+}
+
+@propertyWrapper
+struct IgnoreHashable<Wrapped>: Hashable {
+  @IgnoreEquatable var wrappedValue: Wrapped
+
+  func hash(into hasher: inout Hasher) {}
 }
