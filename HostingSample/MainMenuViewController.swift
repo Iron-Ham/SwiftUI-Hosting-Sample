@@ -165,20 +165,3 @@ extension MainMenuViewController: UICollectionViewDelegate {
     }
   }
 }
-
-
-@propertyWrapper
-struct IgnoreEquatable<Wrapped>: Equatable {
-  var wrappedValue: Wrapped
-
-  static func == (lhs: IgnoreEquatable<Wrapped>, rhs: IgnoreEquatable<Wrapped>) -> Bool {
-    true
-  }
-}
-
-@propertyWrapper
-struct IgnoreHashable<Wrapped>: Hashable {
-  @IgnoreEquatable var wrappedValue: Wrapped
-
-  func hash(into hasher: inout Hasher) {}
-}
