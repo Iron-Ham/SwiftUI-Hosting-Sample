@@ -131,7 +131,7 @@ final class MainMenuViewController: UIViewController {
       }
     }
 
-    let containerCellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { (cell, indexPath, menuItem) in
+    let containerCellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { (cell, _, menuItem) in
       cell.accessories = [.outlineDisclosure(options: UICellAccessory.OutlineDisclosureOptions(style: .header))]
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
       cell.contentConfiguration = UIHostingConfiguration {
