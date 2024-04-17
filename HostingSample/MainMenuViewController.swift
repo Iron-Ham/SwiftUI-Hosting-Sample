@@ -39,7 +39,7 @@ final class MainMenuViewController: UIViewController {
   private typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration
 
   private lazy var layout = UICollectionViewCompositionalLayout { _, environment in
-    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .plain)
+    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
     listConfiguration.headerMode = .firstItemInSection
     return NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: environment)
   }
@@ -117,6 +117,7 @@ final class MainMenuViewController: UIViewController {
   private func configureDataSource() {
     let cellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { cell, _, item in
       cell.accessories = [.disclosureIndicator()]
+      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
       cell.contentConfiguration = UIHostingConfiguration {
         VStack(alignment: .leading) {
           Text(item.title)
