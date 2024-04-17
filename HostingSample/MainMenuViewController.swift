@@ -1,85 +1,36 @@
 import UIKit
-
-private struct MenuItem: Identifiable, Hashable {
-  var title: String
-  var subtitle: String
-
-  @IgnoreHashable
-  var viewControllerProvider: () -> UIViewController
-
-  var id: String { title }
-}
+import SwiftUI
 
 private enum Section: CaseIterable {
-  case basic
-
-  var title: String {
-    switch self {
-    case .basic:
-      "Simple examples"
-    }
-  }
-
-  var examples: [any Example] {
-    switch self {
-    case .basic:
-      SimpleExample.allCases
-    }
-  }
-
-  var item: MenuItem {
-    switch self {
-    case .basic:
-      MenuItem(
-        title: title,
-        subtitle: "",
-        viewControllerProvider: { UIViewController() }
-      )
-    }
-  }
-
-  static func item(for indexPath: IndexPath) -> MenuItem {
-    Section.allCases[indexPath.section].examples[indexPath.row].item
-  }
+  case main
 }
 
-private protocol Example: CaseIterable {
-  var item: MenuItem { get }
-}
+private struct MenuItem: Hashable {
+  let title: LocalizedStringKey
+  private(set) var subtitle: LocalizedStringKey?
+  private(set) var subitems: [MenuItem] = []
+  private(set) var viewController: UIViewController?
 
-private enum SimpleExample: Example {
-  case simpleHostedSwiftUIViews
-  case dynamicSwiftUIViewController
-  case dynamicObservableObject
-  case dynamicPerception
+  private let identifier = UUID()
 
-  var item: MenuItem {
-    switch self {
-    case .simpleHostedSwiftUIViews:
-      return MenuItem(
-        title: "Static SwiftUI View within a UIView",
-        subtitle: "Use a HostingView to nest a SwiftUI element within a UIView",
-        viewControllerProvider: { SimpleHostedViewController() }
-      )
-    case .dynamicSwiftUIViewController:
-      return MenuItem(
-        title: "Dynamic SwiftUI View within a UIViewController",
-        subtitle: "Uses the @Observable macro to minimize view updates",
-        viewControllerProvider: { DynamicSwiftUIViewController() }
-      )
-    case .dynamicObservableObject:
-      return MenuItem(
-        title: "Dynamic SwiftUI View within a UIViewController",
-        subtitle: "Uses an ObservableObject",
-        viewControllerProvider: { DynamicSwiftUIViewObservableObjectController() }
-      )
-    case .dynamicPerception:
-      return MenuItem(
-        title: "Dynamic SwiftUI View within a UIViewController",
-        subtitle: "Uses @Perceptible, a third-party backport of @Observable",
-        viewControllerProvider: { DynamicSwiftUIPerceptibleViewController() }
-      )
-    }
+  init(
+    title: LocalizedStringKey,
+    subtitle: LocalizedStringKey? = nil,
+    subitems: [MenuItem] = [],
+    viewController: @autoclosure () -> UIViewController? = nil
+  ) {
+    self.title = title
+    self.subtitle = subtitle
+    self.subitems = subitems
+    self.viewController = viewController()
+  }
+
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(identifier)
+  }
+
+  static func == (lhs: MenuItem, rhs: MenuItem) -> Bool {
+    lhs.identifier == rhs.identifier
   }
 }
 
@@ -100,7 +51,43 @@ final class MainMenuViewController: UIViewController {
   }()
 
   private var dataSource: UICollectionViewDiffableDataSource<Section, MenuItem>!
-  private let sections = Section.allCases
+
+  private lazy var menuItems: [MenuItem] = [
+    MenuItem(
+      title: "Basic Examples",
+      subitems: [
+        MenuItem(
+          title: "Static SwiftUI Elements",
+          subitems: [
+            MenuItem(
+              title: "Static SwiftUI View within a UIView",
+              subtitle: "Use a HostingView to nest a SwiftUI element within a UIView",
+              viewController: SimpleHostedViewController()
+            )
+          ]
+        ),
+        MenuItem(
+          title: "Dynamic SwiftUI Elements",
+          subitems: [
+            MenuItem(
+              title: "Using `@Observable`",
+              subtitle: "For iOS 17+ minimum deployments",
+              viewController: DynamicSwiftUIViewController()
+            ),
+            MenuItem(
+              title: "Using an `ObservableObject`",
+              subtitle: "`ObservableObject` will generally trigger as many `View` updates for a single property changing as there are `Published` properties. This means that things like `FocusState` dismiss/presents, popovers, and so on will behave erratically. Proceed with extreme care and caution.",
+              viewController: DynamicSwiftUIViewObservableObjectController()
+            ),
+            MenuItem(
+              title: "Using `@Perceptible`",
+              subtitle: "@Perceptible is a third-party backport of `@Observable` that allows us to deploy `@Observable` behaviors on versions earlier than iOS 17. If you can include a third-party dependency and your deploy-target is currently lower than iOS 17, **this is the recommended approach**.",
+              viewController: DynamicSwiftUIPerceptibleViewController()
+            )
+          ]
+        )
+      ])
+  ]
 
   override func loadView() {
     view = collectionView
@@ -110,53 +97,55 @@ final class MainMenuViewController: UIViewController {
     super.viewDidLoad()
     configureDataSource()
 
-    var snapshot = NSDiffableDataSourceSnapshot<Section, MenuItem>()
-    snapshot.appendSections(sections)
-    dataSource.apply(snapshot, animatingDifferences: false)
-    for section in sections {
-      var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<MenuItem>()
-      let headerItem = section.item
-      sectionSnapshot.append([headerItem])
-      let items = section.examples.map(\.item)
-      sectionSnapshot.append(items, to: headerItem)
-      sectionSnapshot.expand([headerItem])
-      dataSource.apply(sectionSnapshot, to: section)
+    self.dataSource.apply(initialSnapshot(), to: .main, animatingDifferences: false)
+  }
+
+  private func initialSnapshot() -> NSDiffableDataSourceSectionSnapshot<MenuItem> {
+    var snapshot = NSDiffableDataSourceSectionSnapshot<MenuItem>()
+
+    func addItems(_ menuItems: [MenuItem], to parent: MenuItem?) {
+      snapshot.append(menuItems, to: parent)
+      for menuItem in menuItems where !menuItem.subitems.isEmpty {
+        addItems(menuItem.subitems, to: menuItem)
+      }
     }
+
+    addItems(menuItems, to: nil)
+    return snapshot
   }
 
   private func configureDataSource() {
     let cellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { cell, _, item in
       cell.accessories = [.disclosureIndicator()]
-      var content = cell.defaultContentConfiguration()
-      content.text = item.title
-      content.secondaryText = item.subtitle
-      content.secondaryTextProperties.color = .secondaryLabel
-      cell.contentConfiguration = content
+      cell.contentConfiguration = UIHostingConfiguration {
+        VStack(alignment: .leading) {
+          Text(item.title)
+            .font(.body)
+            .foregroundStyle(.primary)
+          if let subtitle = item.subtitle {
+            Text(subtitle)
+              .font(.footnote)
+              .foregroundStyle(.secondary)
+          }
+        }
+      }
     }
 
-    let headerRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { cell, indexPath, _ in
-      let section = self.sections[indexPath.section]
-      var content = cell.defaultContentConfiguration()
-      content.text = section.title
-      cell.contentConfiguration = content
-      cell.accessories = [.outlineDisclosure()]
+    let containerCellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { (cell, indexPath, menuItem) in
+      cell.accessories = [.outlineDisclosure(options: UICellAccessory.OutlineDisclosureOptions(style: .header))]
+      cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+      cell.contentConfiguration = UIHostingConfiguration {
+        Text(menuItem.title)
+          .font(.headline)
+      }
     }
 
-    let dataSource = UICollectionViewDiffableDataSource<Section, MenuItem>(
-      collectionView: collectionView
-    ) { collectionView, indexPath, item in
-      if indexPath.row == 0 {
-        collectionView.dequeueConfiguredReusableCell(
-          using: headerRegistration,
-          for: indexPath,
-          item: item
-        )
+    let dataSource = UICollectionViewDiffableDataSource<Section, MenuItem>(collectionView: collectionView) {
+      (collectionView: UICollectionView, indexPath: IndexPath, item: MenuItem) -> UICollectionViewCell? in
+      if item.subitems.isEmpty {
+        return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
       } else {
-        collectionView.dequeueConfiguredReusableCell(
-          using: cellRegistration,
-          for: indexPath,
-          item: item
-        )
+        return collectionView.dequeueConfiguredReusableCell(using: containerCellRegistration, for: indexPath, item: item)
       }
     }
     self.dataSource = dataSource
@@ -168,10 +157,12 @@ extension MainMenuViewController: UICollectionViewDelegate {
     _ collectionView: UICollectionView,
     performPrimaryActionForItemAt indexPath: IndexPath
   ) {
-    navigationController?.pushViewController(
-      Section.item(for: indexPath).viewControllerProvider(),
-      animated: true
-    )
+    guard let menuItem = self.dataSource.itemIdentifier(for: indexPath) else { return }
+    collectionView.deselectItem(at: indexPath, animated: true)
+
+    if let viewController = menuItem.viewController {
+      navigationController?.pushViewController(viewController, animated: true)
+    }
   }
 }
 
