@@ -21,6 +21,7 @@
 		D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF312BD0557F007274D9 /* DynamicSwiftUIObservableObject.swift */; };
 		D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF342BD055D1007274D9 /* IconPickerProvider.swift */; };
 		D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF362BD055D9007274D9 /* ColorPickerProvider.swift */; };
+		D025CF3A2BD05EAE007274D9 /* Perception in Frameworks */ = {isa = PBXBuildFile; productRef = D025CF392BD05EAE007274D9 /* Perception */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D025CF3A2BD05EAE007274D9 /* Perception in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +149,9 @@
 			dependencies = (
 			);
 			name = HostingSample;
+			packageProductDependencies = (
+				D025CF392BD05EAE007274D9 /* Perception */,
+			);
 			productName = HostingSample;
 			productReference = D025CF0C2BD03CE9007274D9 /* HostingSample.app */;
 			productType = "com.apple.product-type.application";
@@ -175,6 +180,9 @@
 				Base,
 			);
 			mainGroup = D025CF032BD03CE9007274D9;
+			packageReferences = (
+				D025CF382BD05EAE007274D9 /* XCRemoteSwiftPackageReference "swift-perception" */,
+			);
 			productRefGroup = D025CF0D2BD03CE9007274D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -435,6 +443,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D025CF382BD05EAE007274D9 /* XCRemoteSwiftPackageReference "swift-perception" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-perception";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D025CF392BD05EAE007274D9 /* Perception */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D025CF382BD05EAE007274D9 /* XCRemoteSwiftPackageReference "swift-perception" */;
+			productName = Perception;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D025CF042BD03CE9007274D9 /* Project object */;
 }
