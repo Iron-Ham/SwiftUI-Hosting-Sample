@@ -23,7 +23,7 @@ private enum Examples: CaseIterable {
       return MenuItem(
         title: "Dynamic SwiftUI View within a UIViewController",
         subtitle: "Uses the @Observable macro to minimize view updates",
-        viewControllerProvider: { DynamicSwiftUIViewController() } // DynamicSwiftUIViewObservableObjectController
+        viewControllerProvider: { DynamicSwiftUIViewController() }
       )
     case .dynamicObservableObject:
       return MenuItem(
