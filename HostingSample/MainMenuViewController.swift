@@ -10,6 +10,7 @@ private enum Examples: CaseIterable {
   case simpleHostedSwiftUIViews
   case dynamicSwiftUIViewController
   case dynamicObservableObject
+  case dynamicPerception
 
   var item: MenuItem {
     switch self {
@@ -30,6 +31,12 @@ private enum Examples: CaseIterable {
         title: "Dynamic SwiftUI View within a UIViewController",
         subtitle: "Uses an ObservableObject",
         viewControllerProvider: { DynamicSwiftUIViewObservableObjectController() }
+      )
+    case .dynamicPerception:
+      return MenuItem(
+        title: "Dynamic SwiftUI View within a UIViewController",
+        subtitle: "Uses @Perceptible, a third-party backport of @Observable",
+        viewControllerProvider: { DynamicSwiftUIPerceptibleViewController() }
       )
     }
   }
