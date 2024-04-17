@@ -60,8 +60,8 @@ final class MainMenuViewController: UIViewController {
           title: "Static SwiftUI Elements",
           subitems: [
             MenuItem(
-              title: "Static SwiftUI View within a UIView",
-              subtitle: "Use a HostingView to nest a SwiftUI element within a UIView",
+              title: "Static `SwiftUI` `View` within a `UIView`",
+              subtitle: "Use a `HostingView` to nest a `SwiftUI` element within a `UIView`",
               viewController: SimpleHostedViewController()
             )
           ]
@@ -76,7 +76,7 @@ final class MainMenuViewController: UIViewController {
             ),
             MenuItem(
               title: "Using an `ObservableObject`",
-              subtitle: "`ObservableObject` will generally trigger as many `View` updates for a single property changing as there are `Published` properties. This means that things like `FocusState` dismiss/presents, popovers, and so on will behave erratically. Proceed with extreme care and caution.",
+              subtitle: "`ObservableObject` will generally trigger as many `View` updates for a single property changing as there are `Published` properties. This means that things like `FocusState`, dismiss/presents, popovers, and so on will behave erratically. Proceed with extreme care and caution.",
               viewController: DynamicSwiftUIViewObservableObjectController()
             ),
             MenuItem(
