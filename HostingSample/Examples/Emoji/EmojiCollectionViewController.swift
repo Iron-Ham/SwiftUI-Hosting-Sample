@@ -367,6 +367,11 @@ private class TitleSupplementaryView: UICollectionReusableView {
 struct EmojiWrapView: View {
   @ScaledMetric(relativeTo: .body) private var bodyHeight = UIFont.preferredFont(forTextStyle: .body).pointSize
 
+  // We use a fixed on-scaling `largeTitle1` font size, as per Apple's current Typography guidelines.
+  // We intentionally do not want to pick the scaling variant – as this is an instance where we
+  // don't want these elements to scale with the user's accessibility setting. This is done to mimic
+  // the system default popover emoji picker behavior on iPadOS, which does not scale with dynamic
+  // font size.
   private let titleHeight: CGFloat = 34
 
   var emoji: Emoji
