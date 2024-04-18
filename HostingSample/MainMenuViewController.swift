@@ -160,6 +160,7 @@ final class MainMenuViewController: UIViewController {
       cell.contentConfiguration = UIHostingConfiguration {
         Text(menuItem.title)
           .font(.headline)
+          .foregroundStyle(Color(uiColor: .label)) // Color.primary behaves oddly in this instance.
       }
     }
 
