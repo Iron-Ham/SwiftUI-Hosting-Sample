@@ -11,8 +11,6 @@ private struct MenuItem: Hashable {
   private(set) var subitems: [MenuItem] = []
   private(set) var viewController: UIViewController?
 
-  private let identifier = UUID()
-
   init(
     title: LocalizedStringKey,
     subtitle: LocalizedStringKey? = nil,
@@ -26,11 +24,7 @@ private struct MenuItem: Hashable {
   }
 
   func hash(into hasher: inout Hasher) {
-    hasher.combine(identifier)
-  }
-
-  static func == (lhs: MenuItem, rhs: MenuItem) -> Bool {
-    lhs.identifier == rhs.identifier
+    hasher.combine(title.stringKey)
   }
 }
 
@@ -39,7 +33,7 @@ final class MainMenuViewController: UIViewController {
   private typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration
 
   private lazy var layout = UICollectionViewCompositionalLayout { _, environment in
-    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
+    var listConfiguration = UICollectionLayoutListConfiguration(appearance: .sidebar)
     listConfiguration.headerMode = .firstItemInSection
     return NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: environment)
   }
@@ -157,10 +151,12 @@ final class MainMenuViewController: UIViewController {
     let containerCellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { (cell, _, menuItem) in
       cell.accessories = [.outlineDisclosure(options: UICellAccessory.OutlineDisclosureOptions(style: .header))]
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
+
+      let color = self.menuItems.contains(menuItem) ? Color.primary : Color.secondary
       cell.contentConfiguration = UIHostingConfiguration {
         Text(menuItem.title)
+          .foregroundStyle(color)
           .font(.headline)
-          .foregroundStyle(Color(uiColor: .label)) // Color.primary behaves oddly in this instance.
       }
     }
 
@@ -187,5 +183,11 @@ extension MainMenuViewController: UICollectionViewDelegate {
     if let viewController = menuItem.viewController {
       navigationController?.pushViewController(viewController, animated: true)
     }
+  }
+}
+
+private extension LocalizedStringKey {
+  var stringKey: String? {
+    Mirror(reflecting: self).children.first(where: { $0.label == "key" })?.value as? String
   }
 }
