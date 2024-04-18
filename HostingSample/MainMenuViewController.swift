@@ -65,7 +65,7 @@ final class MainMenuViewController: UIViewController {
           subitems: [
             MenuItem(
               title: "Using `@Observable`",
-              subtitle: "For iOS 17+ minimum deployments",
+              subtitle: "For iOS 17+ minimum deployments.",
               viewController: DynamicSwiftUIViewController()
             ),
             MenuItem(
