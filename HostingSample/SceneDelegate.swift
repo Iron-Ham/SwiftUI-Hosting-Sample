@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  HostingSample
-//
-//  Created by Hesham Salman on 4/17/24.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

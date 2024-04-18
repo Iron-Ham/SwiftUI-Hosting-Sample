@@ -18,7 +18,7 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
   private var selectedModel: Emoji?
 
   private let selectedBadgeColor = Color.blue.opacity(0.1)
-  private weak var delegate: EmojiCollectionDelegate?
+  weak var delegate: EmojiCollectionDelegate?
 
   private var snapshot: NSDiffableDataSourceSnapshot<Section, Emoji.ID> {
     var snapshot = NSDiffableDataSourceSnapshot<Section, Emoji.ID>()

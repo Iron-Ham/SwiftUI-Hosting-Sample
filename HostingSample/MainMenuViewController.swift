@@ -86,7 +86,29 @@ final class MainMenuViewController: UIViewController {
             )
           ]
         )
-      ])
+      ]
+    ),
+
+    MenuItem(
+      title: "Emoji Views",
+      subitems: [
+        MenuItem(
+          title: "Presentation: inline popover",
+          subitems: [
+            MenuItem(
+              title: "Stock `popover` modifier",
+              subtitle: "Use the stock modifier with `presentationCompactAdaptation` to display as a popover on iPhones",
+              viewController: StockPopoverViewController()
+            ),
+            MenuItem(
+              title: "Custom `popover_backport` modifier",
+              subtitle: "Use the `popover_backport` modifier if your deploy target is less than iOS 16.4",
+              viewController: PopoverBackportViewController()
+            ),
+          ]
+        )
+      ]
+    )
   ]
 
   override func loadView() {

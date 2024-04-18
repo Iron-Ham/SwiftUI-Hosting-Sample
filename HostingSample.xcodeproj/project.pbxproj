@@ -29,6 +29,11 @@
 		D025CF4D2BD08564007274D9 /* EmojiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF4C2BD08564007274D9 /* EmojiData.swift */; };
 		D025CF502BD0859A007274D9 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D025CF4F2BD0859A007274D9 /* OrderedCollections */; };
 		D025CF532BD0874E007274D9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D025CF522BD0874E007274D9 /* SnapKit */; };
+		D025CF5A2BD0A2D6007274D9 /* PopoverBackportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF592BD0A2D6007274D9 /* PopoverBackportViewController.swift */; };
+		D025CF5C2BD0A2E2007274D9 /* StockPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF5B2BD0A2E2007274D9 /* StockPopoverView.swift */; };
+		D025CF5E2BD0A36F007274D9 /* EmojiBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF5D2BD0A36F007274D9 /* EmojiBadgeView.swift */; };
+		D025CF602BD0A77C007274D9 /* StockPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF5F2BD0A77C007274D9 /* StockPopoverViewController.swift */; };
+		D025CF622BD0A810007274D9 /* EmojiPopoverCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF612BD0A810007274D9 /* EmojiPopoverCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +58,11 @@
 		D025CF482BD083F7007274D9 /* EmojiCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewController.swift; sourceTree = "<group>"; };
 		D025CF4A2BD084A5007274D9 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		D025CF4C2BD08564007274D9 /* EmojiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiData.swift; sourceTree = "<group>"; };
+		D025CF592BD0A2D6007274D9 /* PopoverBackportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverBackportViewController.swift; sourceTree = "<group>"; };
+		D025CF5B2BD0A2E2007274D9 /* StockPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPopoverView.swift; sourceTree = "<group>"; };
+		D025CF5D2BD0A36F007274D9 /* EmojiBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBadgeView.swift; sourceTree = "<group>"; };
+		D025CF5F2BD0A77C007274D9 /* StockPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPopoverViewController.swift; sourceTree = "<group>"; };
+		D025CF612BD0A810007274D9 /* EmojiPopoverCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPopoverCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,11 +187,48 @@
 		D025CF472BD083E6007274D9 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
+				D025CF582BD0A19F007274D9 /* Integration */,
+				D025CF542BD0A171007274D9 /* Inline Popover */,
 				D025CF482BD083F7007274D9 /* EmojiCollectionViewController.swift */,
 				D025CF4A2BD084A5007274D9 /* Emoji.swift */,
 				D025CF4C2BD08564007274D9 /* EmojiData.swift */,
 			);
 			path = Emoji;
+			sourceTree = "<group>";
+		};
+		D025CF542BD0A171007274D9 /* Inline Popover */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF572BD0A19A007274D9 /* Backport */,
+				D025CF562BD0A193007274D9 /* Stock */,
+				D025CF5D2BD0A36F007274D9 /* EmojiBadgeView.swift */,
+			);
+			path = "Inline Popover";
+			sourceTree = "<group>";
+		};
+		D025CF562BD0A193007274D9 /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF5B2BD0A2E2007274D9 /* StockPopoverView.swift */,
+				D025CF5F2BD0A77C007274D9 /* StockPopoverViewController.swift */,
+			);
+			path = Stock;
+			sourceTree = "<group>";
+		};
+		D025CF572BD0A19A007274D9 /* Backport */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF592BD0A2D6007274D9 /* PopoverBackportViewController.swift */,
+			);
+			path = Backport;
+			sourceTree = "<group>";
+		};
+		D025CF582BD0A19F007274D9 /* Integration */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF612BD0A810007274D9 /* EmojiPopoverCollectionView.swift */,
+			);
+			path = Integration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +322,15 @@
 				D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */,
 				D025CF4D2BD08564007274D9 /* EmojiData.swift in Sources */,
 				D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObjectController.swift in Sources */,
+				D025CF5A2BD0A2D6007274D9 /* PopoverBackportViewController.swift in Sources */,
 				D025CF442BD061F6007274D9 /* UserColorView3.swift in Sources */,
 				D025CF262BD041AE007274D9 /* SimpleHostedViewController.swift in Sources */,
+				D025CF5E2BD0A36F007274D9 /* EmojiBadgeView.swift in Sources */,
+				D025CF602BD0A77C007274D9 /* StockPopoverViewController.swift in Sources */,
 				D025CF2D2BD04E37007274D9 /* DynamicSwiftUIViewController.swift in Sources */,
+				D025CF5C2BD0A2E2007274D9 /* StockPopoverView.swift in Sources */,
 				D025CF2B2BD04B5D007274D9 /* UserColorView.swift in Sources */,
+				D025CF622BD0A810007274D9 /* EmojiPopoverCollectionView.swift in Sources */,
 				D025CF282BD041BC007274D9 /* HostingView.swift in Sources */,
 				D025CF122BD03CE9007274D9 /* SceneDelegate.swift in Sources */,
 			);
