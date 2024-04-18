@@ -36,10 +36,11 @@ extension EmojiPopoverCollectionView {
       }
       viewController.view.endEditing(true)
       // Why two forms of dismissal?
-      //   1. UIKit and SwiftUI navigation aren't always communicative of one another. When dismissing
-      //      a UIViewController, we aren't gauranteed to toggle any `Binding` that SwiftUI relies on
-      //      to keep state in check. This is especially likely in situations where there is a
-      //      `FocusState` in SwiftUI and an element which can request first responder in UIKit.
+      //   1. UIKit and SwiftUI navigation aren't always communicative of one another. When
+      //      dismissing a UIViewController, we aren't gauranteed to toggle any `Binding` that
+      //      SwiftUI relies on to keep state in check. This is especially likely in situations
+      //      where there is a`FocusState` in SwiftUI and an element which can request first
+      //      responder in UIKit.
       //   2. There aren't any negative side-effects of calling both, but failure to call both will
       //      result in the dismissals failing to occur if there is an active search within the
       //      UIKit component.
