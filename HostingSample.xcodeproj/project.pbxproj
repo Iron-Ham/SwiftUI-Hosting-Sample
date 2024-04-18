@@ -34,6 +34,8 @@
 		D025CF5E2BD0A36F007274D9 /* EmojiBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF5D2BD0A36F007274D9 /* EmojiBadgeView.swift */; };
 		D025CF602BD0A77C007274D9 /* StockPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF5F2BD0A77C007274D9 /* StockPopoverViewController.swift */; };
 		D025CF622BD0A810007274D9 /* EmojiPopoverCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF612BD0A810007274D9 /* EmojiPopoverCollectionView.swift */; };
+		D025CF642BD0AF5F007274D9 /* PopoverBackport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF632BD0AF5F007274D9 /* PopoverBackport.swift */; };
+		D025CF662BD0AF8E007274D9 /* PopoverBackportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF652BD0AF8E007274D9 /* PopoverBackportView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		D025CF5D2BD0A36F007274D9 /* EmojiBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBadgeView.swift; sourceTree = "<group>"; };
 		D025CF5F2BD0A77C007274D9 /* StockPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPopoverViewController.swift; sourceTree = "<group>"; };
 		D025CF612BD0A810007274D9 /* EmojiPopoverCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPopoverCollectionView.swift; sourceTree = "<group>"; };
+		D025CF632BD0AF5F007274D9 /* PopoverBackport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverBackport.swift; sourceTree = "<group>"; };
+		D025CF652BD0AF8E007274D9 /* PopoverBackportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverBackportView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				D025CF592BD0A2D6007274D9 /* PopoverBackportViewController.swift */,
+				D025CF632BD0AF5F007274D9 /* PopoverBackport.swift */,
+				D025CF652BD0AF8E007274D9 /* PopoverBackportView.swift */,
 			);
 			path = Backport;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				D025CF102BD03CE9007274D9 /* AppDelegate.swift in Sources */,
 				D025CF422BD061EB007274D9 /* DynamicSwiftUIPerceptibleViewController.swift in Sources */,
 				D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */,
+				D025CF642BD0AF5F007274D9 /* PopoverBackport.swift in Sources */,
 				D025CF302BD0553B007274D9 /* UserColorView2.swift in Sources */,
 				D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */,
 				D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */,
@@ -333,6 +340,7 @@
 				D025CF622BD0A810007274D9 /* EmojiPopoverCollectionView.swift in Sources */,
 				D025CF282BD041BC007274D9 /* HostingView.swift in Sources */,
 				D025CF122BD03CE9007274D9 /* SceneDelegate.swift in Sources */,
+				D025CF662BD0AF8E007274D9 /* PopoverBackportView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

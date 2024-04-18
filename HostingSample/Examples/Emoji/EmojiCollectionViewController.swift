@@ -150,6 +150,7 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
 
   func update(selection: Emoji?) {
     self.selectedModel = selection
+    applyUpdate()
   }
 
   private func applyUpdate() {

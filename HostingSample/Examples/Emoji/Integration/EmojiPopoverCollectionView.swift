@@ -11,7 +11,7 @@ struct EmojiPopoverCollectionView: UIViewControllerRepresentable {
   }
 
   func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-    (uiViewController.topViewController as? EmojiCollectionViewController)?.update(selection: selectedEmoji)
+    // no-op: As this is a popover, we don't need to update this view. It will dismiss itself.
   }
 
   func makeCoordinator() -> Coordinator {
@@ -41,5 +41,5 @@ extension EmojiPopoverCollectionView {
 }
 
 #Preview {
-  EmojiPopoverCollectionView(selectedEmoji: .constant(Emoji.all.first))
+  EmojiPopoverCollectionView(selectedEmoji: .constant(nil))
 }

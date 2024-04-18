@@ -82,16 +82,3 @@ private extension UIViewController {
   }
 
 }
-
-private extension UIResponder {
-  // Mimics the private function `_viewControllerForAncestor`
-  // `_viewControllerForAncestor` walks up the responder chain looking for the next responder that is a `UIViewController`.
-  @nonobjc var nextViewController: UIViewController? {
-    guard let next = self.next else { return nil }
-    if let next = next as? UIViewController {
-      return next
-    } else {
-      return next.nextViewController
-    }
-  }
-}
