@@ -139,7 +139,7 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
       make.top.equalTo(collectionView.snp.bottom)
     }
 
-    segmentedControl.selectedSegmentTintColor = UIColor(Color.blue)
+    segmentedControl.selectedSegmentTintColor = UIColor(Color.blue.opacity(0.1))
     segmentedControl.selectedSegmentIndex = 0
 
     collectionView.delegate = self
