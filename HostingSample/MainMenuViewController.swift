@@ -157,6 +157,7 @@ final class MainMenuViewController: UIViewController {
         Text(menuItem.title)
           .foregroundStyle(color)
           .font(.headline)
+          .padding(.leading, self.menuItems.contains(menuItem) ? 0 : 8)
       }
     }
 
