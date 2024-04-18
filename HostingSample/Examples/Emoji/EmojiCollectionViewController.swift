@@ -92,7 +92,7 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
     frame: .zero,
     actions: categories.enumerated().map { index, category in
       let image: UIImage? = category.image?.withTintColor(
-        UIColor(Color.primary),
+        UIColor(Color.secondary),
         renderingMode: .alwaysOriginal // `UIAction` will ignore template tints and apply its own.
       )
       return UIAction(
