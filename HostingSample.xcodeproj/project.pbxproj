@@ -24,6 +24,11 @@
 		D025CF3A2BD05EAE007274D9 /* Perception in Frameworks */ = {isa = PBXBuildFile; productRef = D025CF392BD05EAE007274D9 /* Perception */; };
 		D025CF422BD061EB007274D9 /* DynamicSwiftUIPerceptibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF412BD061EB007274D9 /* DynamicSwiftUIPerceptibleViewController.swift */; };
 		D025CF442BD061F6007274D9 /* UserColorView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF432BD061F6007274D9 /* UserColorView3.swift */; };
+		D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF482BD083F7007274D9 /* EmojiCollectionViewController.swift */; };
+		D025CF4B2BD084A5007274D9 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF4A2BD084A5007274D9 /* Emoji.swift */; };
+		D025CF4D2BD08564007274D9 /* EmojiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF4C2BD08564007274D9 /* EmojiData.swift */; };
+		D025CF502BD0859A007274D9 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = D025CF4F2BD0859A007274D9 /* OrderedCollections */; };
+		D025CF532BD0874E007274D9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D025CF522BD0874E007274D9 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,9 @@
 		D025CF362BD055D9007274D9 /* ColorPickerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerProvider.swift; sourceTree = "<group>"; };
 		D025CF412BD061EB007274D9 /* DynamicSwiftUIPerceptibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSwiftUIPerceptibleViewController.swift; sourceTree = "<group>"; };
 		D025CF432BD061F6007274D9 /* UserColorView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserColorView3.swift; sourceTree = "<group>"; };
+		D025CF482BD083F7007274D9 /* EmojiCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewController.swift; sourceTree = "<group>"; };
+		D025CF4A2BD084A5007274D9 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		D025CF4C2BD08564007274D9 /* EmojiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D025CF532BD0874E007274D9 /* SnapKit in Frameworks */,
+				D025CF502BD0859A007274D9 /* OrderedCollections in Frameworks */,
 				D025CF3A2BD05EAE007274D9 /* Perception in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,8 +104,8 @@
 		D025CF232BD04188007274D9 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				D025CF332BD055B8007274D9 /* Dynamic */,
-				D025CF242BD0419A007274D9 /* Static SwiftUI View Within a UIView */,
+				D025CF452BD083CE007274D9 /* Basic */,
+				D025CF472BD083E6007274D9 /* Emoji */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -147,6 +157,33 @@
 			path = Perceptible;
 			sourceTree = "<group>";
 		};
+		D025CF452BD083CE007274D9 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF462BD083D8007274D9 /* Static */,
+				D025CF332BD055B8007274D9 /* Dynamic */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		D025CF462BD083D8007274D9 /* Static */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF242BD0419A007274D9 /* Static SwiftUI View Within a UIView */,
+			);
+			path = Static;
+			sourceTree = "<group>";
+		};
+		D025CF472BD083E6007274D9 /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				D025CF482BD083F7007274D9 /* EmojiCollectionViewController.swift */,
+				D025CF4A2BD084A5007274D9 /* Emoji.swift */,
+				D025CF4C2BD08564007274D9 /* EmojiData.swift */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +202,8 @@
 			name = HostingSample;
 			packageProductDependencies = (
 				D025CF392BD05EAE007274D9 /* Perception */,
+				D025CF4F2BD0859A007274D9 /* OrderedCollections */,
+				D025CF522BD0874E007274D9 /* SnapKit */,
 			);
 			productName = HostingSample;
 			productReference = D025CF0C2BD03CE9007274D9 /* HostingSample.app */;
@@ -196,6 +235,8 @@
 			mainGroup = D025CF032BD03CE9007274D9;
 			packageReferences = (
 				D025CF382BD05EAE007274D9 /* XCRemoteSwiftPackageReference "swift-perception" */,
+				D025CF4E2BD0859A007274D9 /* XCRemoteSwiftPackageReference "swift-collections" */,
+				D025CF512BD0874E007274D9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = D025CF0D2BD03CE9007274D9 /* Products */;
 			projectDirPath = "";
@@ -224,12 +265,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D025CF4B2BD084A5007274D9 /* Emoji.swift in Sources */,
 				D025CF142BD03CE9007274D9 /* MainMenuViewController.swift in Sources */,
 				D025CF102BD03CE9007274D9 /* AppDelegate.swift in Sources */,
 				D025CF422BD061EB007274D9 /* DynamicSwiftUIPerceptibleViewController.swift in Sources */,
 				D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */,
 				D025CF302BD0553B007274D9 /* UserColorView2.swift in Sources */,
 				D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */,
+				D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */,
+				D025CF4D2BD08564007274D9 /* EmojiData.swift in Sources */,
 				D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObjectController.swift in Sources */,
 				D025CF442BD061F6007274D9 /* UserColorView3.swift in Sources */,
 				D025CF262BD041AE007274D9 /* SimpleHostedViewController.swift in Sources */,
@@ -469,6 +513,22 @@
 				minimumVersion = 1.1.5;
 			};
 		};
+		D025CF4E2BD0859A007274D9 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		D025CF512BD0874E007274D9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -476,6 +536,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D025CF382BD05EAE007274D9 /* XCRemoteSwiftPackageReference "swift-perception" */;
 			productName = Perception;
+		};
+		D025CF4F2BD0859A007274D9 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D025CF4E2BD0859A007274D9 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+		D025CF522BD0874E007274D9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D025CF512BD0874E007274D9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
