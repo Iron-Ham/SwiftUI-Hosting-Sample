@@ -95,6 +95,10 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
         UIColor(Color.secondary),
         renderingMode: .alwaysOriginal // `UIAction` will ignore template tints and apply its own.
       )
+      // A note: the `UISegmentedControl(frame:actions:) initializer displays the `UIAction`s in a
+      // `UIMenu` under the hood. There is no support for `UIDeferredMenuElement` within this
+      // initializer, meaning that the `selectedImage` argument of a `UIAction` will not be respected.
+      // A UIMenu cannot dynamically change its elements unless those elements are `UIDeferredMenuElement`.
       return UIAction(
         image: image,
         discoverabilityTitle: category.name
