@@ -7,7 +7,6 @@ struct Emoji: Hashable, @unchecked Sendable, Identifiable {
 
   /// Unicode or image value, displaying rich emoji representation.
   let raw: NSAttributedString
-  let rawImage: UIImage?
 
   /// Base string value, used for raw human-editable text. May be Unicode or ASCII representation.
   let replacementValue: String
@@ -17,13 +16,11 @@ struct Emoji: Hashable, @unchecked Sendable, Identifiable {
   init(
     alias: String,
     raw: NSAttributedString,
-    rawImage: UIImage? = nil,
     replacementValue: String,
     category: EmojiCategory
   ) {
     self.alias = alias
     self.raw = raw
-    self.rawImage = rawImage
     self.replacementValue = replacementValue
     self.category = category
   }

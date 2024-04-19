@@ -16,7 +16,7 @@ struct EmojiBadgeView: View {
   @MainActor private var emojiImage: some View {
     Group {
       if let selectedEmoji {
-        EmojiWrapView(emoji: selectedEmoji)
+        EmojiView(emoji: selectedEmoji)
       } else {
         Label {
           EmptyView()

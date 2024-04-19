@@ -15,9 +15,7 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
   }()
 
   private var emojiDataSource: UICollectionViewDiffableDataSource<Section, Emoji.ID>!
-  private var selectedModel: Emoji?
-
-  private let selectedBadgeColor = Color.blue.opacity(0.1)
+  private var selectedEmoji = ContentView.ViewModel(selectedViewModelId: nil)
   weak var delegate: EmojiCollectionDelegate?
 
   private var snapshot: NSDiffableDataSourceSnapshot<Section, Emoji.ID> {
@@ -153,12 +151,12 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
   }
 
   func update(selection: Emoji?) {
-    self.selectedModel = selection
+    self.selectedEmoji.selectedViewModelId = selection?.id
     applyUpdate()
   }
 
   private func applyUpdate() {
-    emojiDataSource.apply(snapshot, animatingDifferences: false)
+    emojiDataSource.apply(snapshot)
   }
 
   func updateSearchResults(for searchController: UISearchController) {
@@ -206,22 +204,17 @@ private extension EmojiCollectionViewController {
   private func configureDataSource() {
     let cellRegistration = UICollectionView.CellRegistration<
       UICollectionViewCell, Emoji
-    > { cell, _, viewModel in
+    > { cell, indexPath, viewModel in
       cell.contentConfiguration = UIHostingConfiguration { [weak self] in
         if let self {
-          EmojiWrapView(emoji: viewModel, usesBodyScaling: false)
-            .padding(4)
-            .onTapGesture {
-              self.selectedModel = viewModel
-              self.delegate?.didSelect(self, emoji: viewModel)
+          ContentView(
+            viewModel: selectedEmoji,
+            emoji: viewModel,
+            onSelect: { emoji in
+              self.selectedEmoji.selectedViewModelId = emoji.id
+              self.delegate?.didSelect(self, emoji: emoji)
             }
-            .background(
-              viewModel.alias == selectedModel?.alias ? selectedBadgeColor : Color.clear
-            )
-            .clipShape(RoundedRectangle(
-              cornerRadius: 6,
-              style: .continuous
-            ))
+          )
         } else {
           EmptyView()
         }
@@ -364,29 +357,33 @@ private class TitleSupplementaryView: UICollectionReusableView {
   }
 }
 
-struct EmojiWrapView: View {
-  @ScaledMetric(relativeTo: .body) private var bodyHeight = UIFont.preferredFont(forTextStyle: .body).pointSize
+private struct ContentView: View {
+  @State var viewModel: ViewModel
 
-  // We use a fixed on-scaling `largeTitle1` font size, as per Apple's current Typography guidelines.
-  // We intentionally do not want to pick the scaling variant – as this is an instance where we
-  // don't want these elements to scale with the user's accessibility setting. This is done to mimic
-  // the system default popover emoji picker behavior on iPadOS, which does not scale with dynamic
-  // font size.
-  private let titleHeight: CGFloat = 34
-
-  var emoji: Emoji
-  var usesBodyScaling = true
+  let emoji: Emoji
+  let onSelect: (Emoji) -> Void
 
   var body: some View {
-    Group {
-      Text(emoji.replacementValue)
-        .lineLimit(1)
-        .minimumScaleFactor(0.01)
+    EmojiView(emoji: emoji, usesBodyScaling: false)
+      .padding(4)
+      .onTapGesture {
+        viewModel.selectedViewModelId = emoji.id
+        onSelect(emoji)
+      }
+      .background(emoji.id == viewModel.selectedViewModelId ? Color.blue.opacity(0.1) : .clear)
+      .clipShape(RoundedRectangle(
+        cornerRadius: 6,
+        style: .continuous
+      ))
+  }
+}
+
+extension ContentView {
+  @Observable final class ViewModel {
+    var selectedViewModelId: Emoji.ID?
+
+    init(selectedViewModelId: Emoji.ID?) {
+      self.selectedViewModelId = selectedViewModelId
     }
-    .font(usesBodyScaling ? .body : .title)
-    .frame(
-      width: usesBodyScaling ? bodyHeight : titleHeight,
-      height: usesBodyScaling ? bodyHeight : titleHeight
-    )
   }
 }

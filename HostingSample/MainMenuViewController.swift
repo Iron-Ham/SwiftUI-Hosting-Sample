@@ -100,6 +100,17 @@ final class MainMenuViewController: UIViewController {
               viewController: PopoverBackportViewController()
             ),
           ]
+        ),
+
+        MenuItem(
+          title: "Emoji Intensifies: Parallax",
+          subitems: [
+            MenuItem(
+              title: "Animating Emojis, with selection",
+              subtitle: "On a device, this appears as a parallax effect. As we don't have data from `CoreMotion` on the simulator, we've mocked values coming from `CoreMotion` as random numbers over a range. The effect is an 'intensity' animation.",
+              viewController: EmojiIntensifiesViewController()
+            )
+          ]
         )
       ]
     )
