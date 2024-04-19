@@ -10,7 +10,6 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
   private lazy var collectionView: UICollectionView = {
     let view = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     view.backgroundColor = .clear
-    view.showsVerticalScrollIndicator = false
     return view
   }()
 
