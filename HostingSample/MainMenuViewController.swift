@@ -123,6 +123,7 @@ final class MainMenuViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureDataSource()
+    navigationItem.title = "Overview"
 
     self.dataSource.apply(initialSnapshot(), to: .main, animatingDifferences: false)
   }

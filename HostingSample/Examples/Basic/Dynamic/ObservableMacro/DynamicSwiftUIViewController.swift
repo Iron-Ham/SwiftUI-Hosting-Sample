@@ -3,7 +3,7 @@ import SwiftUI
 
 // In this example, we showcase using a `HostingView` for SwiftUI content that is dynamic by nature.
 final class DynamicSwiftUIViewController: UIViewController {
-  var viewModel: UserColorView.ViewModel
+  private var viewModel: UserColorView.ViewModel
   private let colorProvider = ColorPickerDataProvider()
   private let iconProvider = IconPickerDataProvider()
 
@@ -38,7 +38,7 @@ final class DynamicSwiftUIViewController: UIViewController {
   }
 
   override func viewDidLoad() {
-    title = "Dynamic SwiftUI Content"
+    title = "Using @Observable"
     view.backgroundColor = .systemBackground
 
     let contentStackView = UIStackView(arrangedSubviews: [

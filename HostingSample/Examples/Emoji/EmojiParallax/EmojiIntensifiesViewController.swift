@@ -22,6 +22,11 @@ final class EmojiIntensifiesViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemGroupedBackground
     navigationItem.searchController = searchController
+#if targetEnvironment(simulator)
+    navigationItem.title = "Emoji Intensifies"
+#else
+    navigationItem.title = "Emoji Parallax"
+#endif
 
     parallaxHostingView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(parallaxHostingView)
