@@ -40,6 +40,7 @@ struct MySwiftUIView: View {
 ## Examples
 
 | Example | Description | Preview |
+| --- | --- | --- |
 | Overview | An overview of the examples included in this project. | ![Overview](./readme-images/overview.png) |
 | Static SwiftUI Elements | Demonstrates how to use static SwiftUI elements like `Text`, `Image`, and `Button`. | ![Static SwiftUI Elements](./readme-images/static.png) |
 | Dynamic SwiftUI Elements | Demonstrates how to use SwiftUI elements with dynamic values | ![Dynamic SwiftUI Elements](./readme-images/dynamic.png) |
