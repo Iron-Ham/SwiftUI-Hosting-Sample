@@ -75,7 +75,7 @@ final class MainMenuViewController: UIViewController {
             ),
             MenuItem(
               title: "Using `@Perceptible`",
-              subtitle: "@Perceptible is a third-party backport of `@Observable` that allows us to deploy `@Observable` behaviors on versions earlier than iOS 17. If you can include a third-party dependency and your deploy-target is currently lower than iOS 17, **this is the recommended approach**.",
+              subtitle: "`@Perceptible` is a third-party backport of `@Observable` that allows us to deploy `@Observable` behaviors on versions earlier than iOS 17. If you can include a third-party dependency and your deploy-target is currently lower than iOS 17, **this is the recommended approach**.",
               viewController: DynamicSwiftUIPerceptibleViewController()
             )
           ]
@@ -91,7 +91,7 @@ final class MainMenuViewController: UIViewController {
           subitems: [
             MenuItem(
               title: "Stock `popover` modifier",
-              subtitle: "Use the stock modifier with `presentationCompactAdaptation` to display as a popover on iPhones",
+              subtitle: "Use the stock modifier with `presentationCompactAdaptation` to display as a popover on iPhones. Available for iOS 16.4+ deployments.",
               viewController: StockPopoverViewController()
             ),
             MenuItem(
