@@ -127,7 +127,7 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
       right: 0
     )
   }
-  init() {
+  init(embedSearchBarIntoNavigationTitleView: Bool = true) {
     super.init(nibName: nil, bundle: nil)
     view.addSubview(collectionView)
     collectionView.snp.makeConstraints { make in
@@ -146,13 +146,21 @@ final class EmojiCollectionViewController: UIViewController, UISearchResultsUpda
 
     collectionView.delegate = self
     definesPresentationContext = true
-    navigationItem.titleView = searchController.searchBar
+    if embedSearchBarIntoNavigationTitleView {
+      navigationItem.titleView = searchController.searchBar
+    }
     configureDataSource()
   }
 
   func update(selection: Emoji?) {
+    guard self.selectedEmoji.selectedViewModelId != selection?.id else { return }
     self.selectedEmoji.selectedViewModelId = selection?.id
     applyUpdate()
+  }
+
+  func update(searchText: String) {
+    guard emojiSearchText != searchText else { return }
+    emojiSearchText = searchText
   }
 
   private func applyUpdate() {

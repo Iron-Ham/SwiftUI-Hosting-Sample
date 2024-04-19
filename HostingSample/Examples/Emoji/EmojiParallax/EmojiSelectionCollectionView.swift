@@ -2,16 +2,17 @@ import SwiftUI
 
 struct EmojiSelectionCollectionView: UIViewControllerRepresentable {
   @Binding var selectedEmoji: Emoji?
+  @Binding var searchText: String?
 
-  func makeUIViewController(context: Context) -> UINavigationController {
-    let viewController = EmojiCollectionViewController()
+  func makeUIViewController(context: Context) -> EmojiCollectionViewController {
+    let viewController = EmojiCollectionViewController(embedSearchBarIntoNavigationTitleView: false)
     viewController.delegate = context.coordinator
-    return UINavigationController(rootViewController: viewController)
+    return viewController
   }
 
-  func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-    let viewController = uiViewController.topViewController as? EmojiCollectionViewController
-    viewController?.update(selection: selectedEmoji)
+  func updateUIViewController(_ uiViewController: EmojiCollectionViewController, context: Context) {
+    uiViewController.update(selection: selectedEmoji)
+    uiViewController.update(searchText: searchText ?? "")
   }
 
   func makeCoordinator() -> Coordinator {

@@ -7,7 +7,9 @@ struct EmojiWiggleView: View {
   var body: some View {
     Text(emoji.replacementValue)
       .font(.largeTitle)
-      .offset(x: motionManager.roll * 100, y: motionManager.pitch * 100)
+      .animation(.easeInOut) {
+        $0.offset(x: motionManager.roll * 100, y: motionManager.pitch * 100)
+      }
       .onAppear {
         motionManager.startMonitoringMotionUpdates()
       }

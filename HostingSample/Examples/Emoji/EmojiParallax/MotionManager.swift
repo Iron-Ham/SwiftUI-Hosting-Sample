@@ -29,9 +29,10 @@ class MotionManager {
   }
 
   private func valuePublisher() {
-    Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
-      self?.pitch = Double.random(in: -0.02 ... 0.02)
-      self?.roll = Double.random(in: -0.02 ... 0.02)
+    let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+      self?.pitch = Double.random(in: -0.05 ... 0.05)
+      self?.roll = Double.random(in: -0.05 ... 0.05)
     }
+    RunLoop.main.add(timer, forMode: .common)
   }
 }

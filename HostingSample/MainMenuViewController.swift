@@ -107,7 +107,7 @@ final class MainMenuViewController: UIViewController {
           subitems: [
             MenuItem(
               title: "Animating Emojis, with selection",
-              subtitle: "On a device, this appears as a parallax effect. As we don't have data from `CoreMotion` on the simulator, we've mocked values coming from `CoreMotion` as random numbers over a range. The effect is an 'intensity' animation.",
+              subtitle: "On a device, this appears as a parallax effect. As we don't have data from `CoreMotion` on the simulator, we've mocked values coming from `CoreMotion` as random numbers over a range. The effect on a simulator is an \"intensifies\" animation. More importantly, this demo showcases how we can continue to utilize the `EmojiCollectionViewController`'s filtering even though we don't have access to its `searchController`.",
               viewController: EmojiIntensifiesViewController()
             )
           ]
