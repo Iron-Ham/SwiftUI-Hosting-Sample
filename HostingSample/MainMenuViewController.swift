@@ -1,10 +1,10 @@
 import UIKit
 import SwiftUI
 
-///Contains the full set of examples within this project.
-///This view is structured as containing a `UICollectionView`, with a diffable data source and a compositional layout.
-///The cells within this view are inlined SwiftUI via `UIHostingConfiguration`, and the sections are configured to support three
-///levels of nesting: top-level items, sub-sections, and content.
+/// Contains the full set of examples within this project.
+/// This view is structured as containing a `UICollectionView`, with a diffable data source and a compositional layout.
+/// The cells within this view are inlined SwiftUI via `UIHostingConfiguration`, and the sections are configured to support three
+/// levels of nesting: top-level items, sub-sections, and content.
 final class MainMenuViewController: UIViewController {
   private typealias CellRegistration = UICollectionView.CellRegistration
   private typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration
@@ -75,7 +75,7 @@ final class MainMenuViewController: UIViewController {
               title: "Custom `popover_backport` modifier",
               subtitle: "Use the `popover_backport` modifier if your deploy target is less than iOS 16.4",
               viewController: PopoverBackportViewController()
-            ),
+            )
           ]
         ),
 
@@ -137,8 +137,12 @@ final class MainMenuViewController: UIViewController {
       }
     }
 
-    let containerCellRegistration = CellRegistration<UICollectionViewListCell, MenuItem> { (cell, _, menuItem) in
-      cell.accessories = [.outlineDisclosure(options: UICellAccessory.OutlineDisclosureOptions(style: .header))]
+    let containerCellRegistration = CellRegistration<
+      UICollectionViewListCell, MenuItem
+    > { (cell, _, menuItem) in
+      cell.accessories = [
+        .outlineDisclosure(options: UICellAccessory.OutlineDisclosureOptions(style: .header))
+      ]
       cell.backgroundConfiguration = UIBackgroundConfiguration.clear()
 
       let color = self.menuItems.contains(menuItem) ? Color.primary : Color.secondary
@@ -150,12 +154,21 @@ final class MainMenuViewController: UIViewController {
       }
     }
 
-    let dataSource = UICollectionViewDiffableDataSource<Section, MenuItem>(collectionView: collectionView) {
-      (collectionView: UICollectionView, indexPath: IndexPath, item: MenuItem) -> UICollectionViewCell? in
+    let dataSource = UICollectionViewDiffableDataSource<Section, MenuItem>(
+      collectionView: collectionView
+    ) { collectionView, indexPath, item in
       if item.subitems.isEmpty {
-        return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
+        return collectionView.dequeueConfiguredReusableCell(
+          using: cellRegistration,
+          for: indexPath,
+          item: item
+        )
       } else {
-        return collectionView.dequeueConfiguredReusableCell(using: containerCellRegistration, for: indexPath, item: item)
+        return collectionView.dequeueConfiguredReusableCell(
+          using: containerCellRegistration,
+          for: indexPath,
+          item: item
+        )
       }
     }
     self.dataSource = dataSource

@@ -17,7 +17,7 @@ class MotionManager {
 
     motionManager.deviceMotionUpdateInterval = 0.01
 
-    motionManager.startDeviceMotionUpdates(to: .main) { motion, error in
+    motionManager.startDeviceMotionUpdates(to: .main) { motion, _ in
       guard let motion = motion else { return }
       self.pitch = motion.attitude.pitch
       self.roll = motion.attitude.roll

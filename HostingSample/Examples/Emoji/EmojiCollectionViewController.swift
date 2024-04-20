@@ -211,7 +211,7 @@ private extension EmojiCollectionViewController {
   private func configureDataSource() {
     let cellRegistration = UICollectionView.CellRegistration<
       UICollectionViewCell, Emoji
-    > { cell, indexPath, viewModel in
+    > { cell, _, viewModel in
       cell.contentConfiguration = UIHostingConfiguration { [weak self] in
         if let self {
           ContentView(
