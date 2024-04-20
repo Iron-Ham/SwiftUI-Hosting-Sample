@@ -1,9 +1,10 @@
 import UIKit
 import SwiftUI
 
-// In this example, we showcase using a `HostingView` for SwiftUI content that is inherently static: It does not change.
+/// Showcases static SwiftUI content within a `UIView`.
+/// In this instance, we showcase a SwiftUI `Label` and contrast it to a `UIKit` `UIImageView` and `UILabel` within a
+/// `UIStackView`.
 final class SimpleHostedViewController: UIViewController {
-
   override func viewDidLoad() {
     title = "Static SwiftUI View within a UIView"
     view.backgroundColor = .systemBackground

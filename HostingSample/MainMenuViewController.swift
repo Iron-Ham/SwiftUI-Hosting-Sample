@@ -1,33 +1,10 @@
 import UIKit
 import SwiftUI
 
-private enum Section: CaseIterable {
-  case main
-}
-
-private struct MenuItem: Hashable {
-  let title: LocalizedStringKey
-  private(set) var subtitle: LocalizedStringKey?
-  private(set) var subitems: [MenuItem] = []
-  private(set) var viewController: UIViewController?
-
-  init(
-    title: LocalizedStringKey,
-    subtitle: LocalizedStringKey? = nil,
-    subitems: [MenuItem] = [],
-    viewController: @autoclosure () -> UIViewController? = nil
-  ) {
-    self.title = title
-    self.subtitle = subtitle
-    self.subitems = subitems
-    self.viewController = viewController()
-  }
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(title.stringKey)
-  }
-}
-
+///Contains the full set of examples within this project.
+///This view is structured as containing a `UICollectionView`, with a diffable data source and a compositional layout.
+///The cells within this view are inlined SwiftUI via `UIHostingConfiguration`, and the sections are configured to support three
+///levels of nesting: top-level items, sub-sections, and content.
 final class MainMenuViewController: UIViewController {
   private typealias CellRegistration = UICollectionView.CellRegistration
   private typealias SupplementaryRegistration = UICollectionView.SupplementaryRegistration
@@ -195,6 +172,35 @@ extension MainMenuViewController: UICollectionViewDelegate {
 
     if let viewController = menuItem.viewController {
       navigationController?.pushViewController(viewController, animated: true)
+    }
+  }
+}
+
+private extension MainMenuViewController {
+  enum Section: CaseIterable {
+    case main
+  }
+
+  struct MenuItem: Hashable {
+    let title: LocalizedStringKey
+    private(set) var subtitle: LocalizedStringKey?
+    private(set) var subitems: [MenuItem] = []
+    private(set) var viewController: UIViewController?
+
+    init(
+      title: LocalizedStringKey,
+      subtitle: LocalizedStringKey? = nil,
+      subitems: [MenuItem] = [],
+      viewController: @autoclosure () -> UIViewController? = nil
+    ) {
+      self.title = title
+      self.subtitle = subtitle
+      self.subitems = subitems
+      self.viewController = viewController()
+    }
+
+    func hash(into hasher: inout Hasher) {
+      hasher.combine(title.stringKey)
     }
   }
 }
