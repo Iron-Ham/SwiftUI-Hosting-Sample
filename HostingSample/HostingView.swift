@@ -45,7 +45,11 @@ private extension UIViewController {
   /// - Parameters:
   ///   - child: The child `UIViewController` to add
   ///   - layoutGuide: An optional UILayoutGuide to pin the  child `UIViewController` to. If this is nil, the child will pin itself to the parent.
-  func add(_ child: UIViewController, contentView: UIView? = nil, layoutGuide: UILayoutGuide? = nil) {
+  func add(
+    _ child: UIViewController,
+    contentView: UIView? = nil,
+    layoutGuide: UILayoutGuide? = nil
+  ) {
     addChild(child)
     let superView: UIView = contentView ?? self.view
     superView.addSubview(child.view)
