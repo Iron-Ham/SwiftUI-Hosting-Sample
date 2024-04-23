@@ -45,7 +45,7 @@ private struct _PopoverBackportView: View {
 
 private extension _PopoverBackportView {
   final class ViewModel: ObservableObject {
-    var someBoolean = false
+    @Published var someBoolean = false
     var timer: Timer?
 
     init() {

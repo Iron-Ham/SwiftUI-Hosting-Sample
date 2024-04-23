@@ -76,16 +76,6 @@ final class MainMenuViewController: UIViewController {
               subtitle: "Use the `popover_backport` modifier if your deploy target is less than iOS 16.4",
               viewController: PopoverBackportViewController()
             ),
-            MenuItem(
-              title: "Why `ObservableObject` should be generally avoided: Using `@Observable`",
-              subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `@Observable` macro instead of `ObservableObject`. It does not re-render the view unnecessarily, as no dependent properties have changed. **NOTE:** Unlike `@State`, this does not re-render only the subviews that need to be re-rendered. It will re-render the entire container if it detects a dependent key has changed.",
-              viewController: ObservableRerenderTrackerViewController()
-            ),
-            MenuItem(
-              title: "Why `ObservableObject` should be generally avoided: Using `ObservableObject`",
-              subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `ObservableObject` protocol instead of `@Observable`. It triggers a full re-render of the view whenever **any** property of the `ObservableObject` changes.",
-              viewController: ObservableObjectRerenderTrackerViewController()
-            )
           ]
         ),
 
@@ -99,6 +89,24 @@ final class MainMenuViewController: UIViewController {
             )
           ]
         )
+      ]
+    ),
+
+    MenuItem(
+      title: "Render Behavior",
+      subitems: [
+        MenuItem(title: "Basic render behavior", subitems: [
+          MenuItem(
+            title: "The `@Observable` macro",
+            subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `@Observable` macro instead of `ObservableObject`. It does not re-render the view unnecessarily, as no dependent properties have changed.",
+            viewController: ObservableRerenderTrackerViewController()
+          ),
+          MenuItem(
+            title: "The `ObservableObject` protocol.",
+            subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `ObservableObject` protocol instead of `@Observable`. It triggers a full re-render of the view whenever **any** property of the `ObservableObject` changes.",
+            viewController: ObservableObjectRerenderTrackerViewController()
+          )
+        ])
       ]
     )
   ]
