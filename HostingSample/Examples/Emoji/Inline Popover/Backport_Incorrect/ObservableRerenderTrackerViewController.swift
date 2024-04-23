@@ -45,22 +45,16 @@ private struct _PopoverBackportView: View {
 
 private extension _PopoverBackportView {
   @Observable final class ViewModel {
-    var showEmojiSheet: Bool = false
-    var selectedEmoji: Emoji?
+    var someBoolean = false
     @ObservationIgnored
     var timer: Timer?
 
-    init(
-      showEmojiSheet: Bool = false,
-      selectedEmoji: Emoji? = nil
-    ) {
-      self.showEmojiSheet = showEmojiSheet
-      self.selectedEmoji = selectedEmoji
+    init() {
       timer = Timer.scheduledTimer(
         withTimeInterval: 1,
         repeats: true
       ) { _ in
-        self.showEmojiSheet = false
+        self.someBoolean = false
       }
     }
   }
