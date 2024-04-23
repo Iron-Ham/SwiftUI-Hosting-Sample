@@ -118,17 +118,17 @@ final class MainMenuViewController: UIViewController {
           subitems: [
             MenuItem(
               title: "Using `@State`",
-              subtitle: "This example is an extension of the Single-view `@State` example. It contains a `StockPopoverView` in addition to the `Text` from the previous example. The `StockPopoverView` uses `@State`.",
+              subtitle: "This example is an extension of the Single-view `@State` example. It contains a nearly identical `_SubView` which is _not_ `Equatable` and does not use the `.equatable()` View modifier. Given that the `@State` value is not in use, it never re-renders its children.",
               viewController: MultiViewStateRerenderTrackerViewController()
             ),
             MenuItem(
-              title: "Using `@State` and `@Observable`: with `@State` value being used",
-              subtitle: "Identical to the previous example, but with the addition of a new `Text` that uses the `@State var count`.",
+              title: "Using `@State`: with `@State` value being used",
+              subtitle: "Identical to the previous example, but with two additions: (1) It marks the `_SubView` `.equatable()`. (2) It uses an additional view which utilizes the `count` `@State` property. As a result, the direct child views of this view are re-rendered each time that `State` changes, whereas the `_SubView` is only rendered once.",
               viewController: MultiViewStateRerenderWithUsedStateTrackerViewController()
             ),
             MenuItem(
               title: "Using `@State` and `@Observable`",
-              subtitle: "This example is an extension of the Single-view `@State` example. It contains a `PopoverView` in addition to the `Text` from the previous example. The `PopoverView` uses `@State` to store an `@Observable` view model.",
+              subtitle: "Similar to the previous example, but uses a `ObservablePopoverView` in place of the `_SubView`, as the `ObservablePopoverView` uses an `@Observable`. **NOTE:** the `ObservablePopoverView` is re-rendered each time, but the `@Observable` `ViewModel` is copied by reference to each new `ObservablePopoverView`. This ensures no loss of state between re-renders, but may result in unintended behavior as the `View` continually re-renders. Additionally, rendering complex `View`s more than necessary can be a huge cost to performance. **In order to prevent a re-render of `View`s, `@State` must be tightly scoped, constituent subviews must be `Equatable`, and they must additionally use the `.equatable()` modifier.**",
               viewController: MultiViewMixedStateRerenderTrackerViewController()
             ),
           ]

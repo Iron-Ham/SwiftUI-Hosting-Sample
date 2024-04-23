@@ -55,5 +55,6 @@ private struct _SubView: View, Equatable {
         green: .random(in: 0...1),
         blue: .random(in: 0...1)
       ))
+      .padding()
   }
 }

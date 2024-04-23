@@ -27,9 +27,9 @@ final class MultiViewMixedStateRerenderTrackerViewController: UIViewController {
 private struct _View: View {
   @State var count = 0
   let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+  private let colors: [Color] = [.blue, .red, .green, .purple, .yellow, .orange, .cyan]
 
   var body: some View {
-    let _ = Self._printChanges()
     VStack {
       Text("This text color changes each time it is re-rendered")
         .foregroundStyle(Color(
@@ -39,6 +39,10 @@ private struct _View: View {
         ))
 
       ObservablePopoverView()
+
+      Text("This `Text` background cycles through a set of known background colors.")
+        .padding()
+        .background(colors[count % colors.count])
     }
     .onReceive(timer) { input in
       count += 1
@@ -55,6 +59,7 @@ private struct ObservablePopoverView: View {
   @State var viewModel = ViewModel()
 
   var body: some View {
+    let _ = Self._printChanges()
     EmojiBadgeView(showEmojiSheet: $viewModel.showEmojiSheet, selectedEmoji: $viewModel.selectedEmoji)
       .accessibilityAddTraits(.isButton)
       .onTapGesture { viewModel.showEmojiSheet.toggle() }
@@ -70,5 +75,17 @@ private struct ObservablePopoverView: View {
           )
           .presentationCompactAdaptation(.popover)
       }
+  }
+}
+
+private struct _SubView: View, Equatable {
+  var body: some View {
+    let _ = Self._printChanges()
+    Text("This `subview` `Text` changes color each time it is re-rendered.")
+      .foregroundStyle(Color(
+        red: .random(in: 0...1),
+        green: .random(in: 0...1),
+        blue: .random(in: 0...1)
+      ))
   }
 }
