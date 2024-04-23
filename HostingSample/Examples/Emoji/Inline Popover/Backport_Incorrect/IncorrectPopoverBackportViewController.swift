@@ -29,35 +29,64 @@ final class IncorrectPopoverBackportViewController: UIViewController {
 
 private struct _PopoverBackportView: View {
   @StateObject var viewModel: ViewModel
+  @FocusState private var focusedField: FocusableField?
+
+  private enum FocusableField: Hashable {
+      case text
+  }
 
   var body: some View {
-    EmojiBadgeView(
-      showEmojiSheet: $viewModel.showEmojiSheet,
-      selectedEmoji: $viewModel.selectedEmoji
-    )
-    .accessibilityAddTraits(.isButton)
-    .onTapGesture {
-      viewModel.showEmojiSheet.toggle()
+    let _ = Self._printChanges()
+    VStack {
+      TextField("Enter text", text: $viewModel.text)
+        .focused($focusedField, equals: .text)
+        .onSubmit {
+          focusedField = nil
+        }
+
+      Text("This text color changes each time it is re-rendered")
+        .foregroundStyle(Color(
+          red: .random(in: 0...1),
+          green: .random(in: 0...1),
+          blue: .random(in: 0...1)
+        ))
+      EmojiBadgeView(
+        showEmojiSheet: $viewModel.showEmojiSheet,
+        selectedEmoji: $viewModel.selectedEmoji
+      )
+      .accessibilityAddTraits(.isButton)
+      .onTapGesture {
+        focusedField = nil
+        viewModel.showEmojiSheet.toggle()
+      }
+      .popover_backport(isPresented: $viewModel.showEmojiSheet) {
+        EmojiPopoverCollectionView(selectedEmoji: $viewModel.selectedEmoji)
+          .frame(
+            minWidth: 200,
+            idealWidth: 400,
+            maxWidth: 400,
+            minHeight: 200,
+            idealHeight: 400,
+            maxHeight: 400
+          )
+      }
     }
-    .popover_backport(isPresented: $viewModel.showEmojiSheet) {
-      EmojiPopoverCollectionView(selectedEmoji: $viewModel.selectedEmoji)
-        .frame(
-          minWidth: 200,
-          idealWidth: 400,
-          maxWidth: 400,
-          minHeight: 200,
-          idealHeight: 400,
-          maxHeight: 400
-        )
+    .onAppear {
+      focusedField = .text
     }
   }
 }
 
 private extension _PopoverBackportView {
-  @MainActor
   final class ViewModel: ObservableObject {
     @Published var showEmojiSheet: Bool = false
-    @Published var selectedEmoji: Emoji?
+    @Published var selectedEmoji: Emoji? {
+      didSet {
+        showEmojiSheet = false
+      }
+    }
+    @Published var color: Color?
+    @Published var text = ""
   }
 }
 
