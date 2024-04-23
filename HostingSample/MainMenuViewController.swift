@@ -77,9 +77,14 @@ final class MainMenuViewController: UIViewController {
               viewController: PopoverBackportViewController()
             ),
             MenuItem(
-              title: "Why `ObservableObject` should be generally avoided",
-              subtitle: "This example is identical to the `popover_backport` example, with one key difference: It uses an `ObservableObject` declared as a `@StateObject` instead of an `@Observable` or `@Perceptible` view model. In order to view incorrect behavior: select any emoji in the emoji picker. The emoji picker will dismiss and then immediately re-present as the `ObservableObject` will trigger repeated redraws of the `View`.",
-              viewController: IncorrectPopoverBackportViewController()
+              title: "Why `ObservableObject` should be generally avoided: Using `@Observable`",
+              subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `@Observable` macro instead of `ObservableObject`. It does not re-render the view unnecessarily, as no dependent properties have changed. **NOTE:** Unlike `@State`, this does not re-render only the subviews that need to be re-rendered. It will re-render the entire container if it detects a dependent key has changed.",
+              viewController: ObservableRerenderTrackerViewController()
+            ),
+            MenuItem(
+              title: "Why `ObservableObject` should be generally avoided: Using `ObservableObject`",
+              subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `ObservableObject` protocol instead of `@Observable`. It triggers a full re-render of the view whenever **any** property of the `ObservableObject` changes.",
+              viewController: ObservableObjectRerenderTrackerViewController()
             )
           ]
         ),

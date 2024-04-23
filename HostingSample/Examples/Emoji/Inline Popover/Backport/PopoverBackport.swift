@@ -45,6 +45,11 @@ where V: View {
   func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
     self.isPresented.wrappedValue = false
   }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    self.isPresented.wrappedValue = false
+  }
 }
 
 struct PopoverBackportModifier<PopoverContent>: ViewModifier where PopoverContent: View {

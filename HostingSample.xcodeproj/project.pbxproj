@@ -42,7 +42,8 @@
 		D025CF762BD1B5A5007274D9 /* EmojiParallaxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF752BD1B5A5007274D9 /* EmojiParallaxView.swift */; };
 		D025CF782BD1B748007274D9 /* EmojiIntensifiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF772BD1B748007274D9 /* EmojiIntensifiesViewController.swift */; };
 		D025CF7A2BD2E1DB007274D9 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF792BD2E1DB007274D9 /* EmojiView.swift */; };
-		D025CF7D2BD45DD4007274D9 /* IncorrectPopoverBackportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF7C2BD45DD4007274D9 /* IncorrectPopoverBackportViewController.swift */; };
+		D025CF7D2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF7C2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift */; };
+		D025CF812BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF802BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +81,8 @@
 		D025CF752BD1B5A5007274D9 /* EmojiParallaxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiParallaxView.swift; sourceTree = "<group>"; };
 		D025CF772BD1B748007274D9 /* EmojiIntensifiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiIntensifiesViewController.swift; sourceTree = "<group>"; };
 		D025CF792BD2E1DB007274D9 /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
-		D025CF7C2BD45DD4007274D9 /* IncorrectPopoverBackportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncorrectPopoverBackportViewController.swift; sourceTree = "<group>"; };
+		D025CF7C2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableRerenderTrackerViewController.swift; sourceTree = "<group>"; };
+		D025CF802BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +263,8 @@
 		D025CF7B2BD45DBD007274D9 /* Backport_Incorrect */ = {
 			isa = PBXGroup;
 			children = (
-				D025CF7C2BD45DD4007274D9 /* IncorrectPopoverBackportViewController.swift */,
+				D025CF7C2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift */,
+				D025CF802BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift */,
 			);
 			path = Backport_Incorrect;
 			sourceTree = "<group>";
@@ -347,7 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D025CF7D2BD45DD4007274D9 /* IncorrectPopoverBackportViewController.swift in Sources */,
+				D025CF7D2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift in Sources */,
+				D025CF812BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift in Sources */,
 				D025CF4B2BD084A5007274D9 /* Emoji.swift in Sources */,
 				D025CF142BD03CE9007274D9 /* MainMenuViewController.swift in Sources */,
 				D025CF102BD03CE9007274D9 /* AppDelegate.swift in Sources */,
