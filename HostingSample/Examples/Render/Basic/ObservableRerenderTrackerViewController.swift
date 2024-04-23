@@ -1,7 +1,7 @@
 import SwiftUI
 
-final class ObservableObjectRerenderTrackerViewController: UIViewController {
-  private var viewModel = _PopoverBackportView.ViewModel()
+final class ObservableRerenderTrackerViewController: UIViewController {
+  private var viewModel = _View.ViewModel()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -9,7 +9,7 @@ final class ObservableObjectRerenderTrackerViewController: UIViewController {
     view.backgroundColor = .systemGroupedBackground
 
     let contentView = HostingView {
-      _PopoverBackportView(viewModel: self.viewModel)
+      _View(viewModel: viewModel)
     }
 
     let stackView = UIStackView(arrangedSubviews: [UIView(), contentView, UIView()])
@@ -26,9 +26,8 @@ final class ObservableObjectRerenderTrackerViewController: UIViewController {
   }
 }
 
-
-private struct _PopoverBackportView: View {
-  @StateObject var viewModel: ViewModel
+private struct _View: View {
+  @State var viewModel: ViewModel
 
   var body: some View {
     let _ = Self._printChanges()
@@ -43,9 +42,10 @@ private struct _PopoverBackportView: View {
   }
 }
 
-private extension _PopoverBackportView {
-  final class ViewModel: ObservableObject {
-    @Published var someBoolean = false
+private extension _View {
+  @Observable final class ViewModel {
+    var someBoolean = false
+    @ObservationIgnored
     var timer: Timer?
 
     init() {
