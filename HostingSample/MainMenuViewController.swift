@@ -95,7 +95,7 @@ final class MainMenuViewController: UIViewController {
     MenuItem(
       title: "Render Behavior",
       subitems: [
-        MenuItem(title: "Basic render behavior", subitems: [
+        MenuItem(title: "Single-view behavior", subitems: [
           MenuItem(
             title: "The `@Observable` macro",
             subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `@Observable` macro instead of `ObservableObject`. It does not re-render the view unnecessarily, as no dependent properties have changed.",
@@ -107,11 +107,32 @@ final class MainMenuViewController: UIViewController {
             viewController: ObservableObjectRerenderTrackerViewController()
           ),
           MenuItem(
-            title: "Using `State`",
+            title: "Using `@State`",
             subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses `@State` to store an unused integer.",
             viewController: StateRerenderTrackerViewController()
           )
-        ])
+        ]),
+
+        MenuItem(
+          title: "Multi-view behavior",
+          subitems: [
+            MenuItem(
+              title: "Using `@State`",
+              subtitle: "This example is an extension of the Single-view `@State` example. It contains a `StockPopoverView` in addition to the `Text` from the previous example. The `StockPopoverView` uses `@State`.",
+              viewController: MultiViewStateRerenderTrackerViewController()
+            ),
+            MenuItem(
+              title: "Using `@State` and `@Observable`: with `@State` value being used",
+              subtitle: "Identical to the previous example, but with the addition of a new `Text` that uses the `@State var count`.",
+              viewController: MultiViewStateRerenderWithUsedStateTrackerViewController()
+            ),
+            MenuItem(
+              title: "Using `@State` and `@Observable`",
+              subtitle: "This example is an extension of the Single-view `@State` example. It contains a `PopoverView` in addition to the `Text` from the previous example. The `PopoverView` uses `@State` to store an `@Observable` view model.",
+              viewController: MultiViewMixedStateRerenderTrackerViewController()
+            ),
+          ]
+        )
       ]
     )
   ]

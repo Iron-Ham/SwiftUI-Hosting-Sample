@@ -5,6 +5,7 @@ struct StockPopoverView: View {
   @State var selectedEmoji: Emoji?
 
   var body: some View {
+    let _ = Self._logChanges()
     EmojiBadgeView(showEmojiSheet: $showEmojiSheet, selectedEmoji: $selectedEmoji)
       .accessibilityAddTraits(.isButton)
       .onTapGesture { showEmojiSheet.toggle() }
