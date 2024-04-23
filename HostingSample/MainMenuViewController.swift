@@ -131,6 +131,11 @@ final class MainMenuViewController: UIViewController {
               subtitle: "Similar to the previous example, but uses a `ObservablePopoverView` in place of the `_SubView`, as the `ObservablePopoverView` uses an `@Observable`. **NOTE:** the `ObservablePopoverView` is re-rendered each time, but the `@Observable` `ViewModel` is copied by reference to each new `ObservablePopoverView`. This ensures no loss of state between re-renders, but may result in unintended behavior as the `View` continually re-renders. Additionally, rendering complex `View`s more than necessary can be a huge cost to performance. **In order to prevent a re-render of `View`s, `@State` must be tightly scoped, constituent subviews must be `Equatable`, and they must additionally use the `.equatable()` modifier.**",
               viewController: MultiViewMixedStateRerenderTrackerViewController()
             ),
+            MenuItem(
+              title: "Using `@State` and `@Observable`: with `Equatable`",
+              subtitle: "Identical to the previous example, but the `ObservablePopoverView` has been given `Equatable` conformance and uses the `.equatable()` modifier. As a result, the `ObservablePopoverView` does not re-render unless its dependencies change.",
+              viewController: MultiViewMixedStateRerenderTrackerViewController()
+            ),
           ]
         )
       ]

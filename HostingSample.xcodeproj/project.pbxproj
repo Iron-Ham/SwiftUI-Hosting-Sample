@@ -48,6 +48,7 @@
 		D025CF882BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF872BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift */; };
 		D025CF8A2BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */; };
 		D025CF8C2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8B2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift */; };
+		D025CF8E2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		D025CF872BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewStateRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 		D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedStateRerenderTrackerVIewController.swift; sourceTree = "<group>"; };
 		D025CF8B2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedState2ViewController.swift; sourceTree = "<group>"; };
+		D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				D025CF872BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift */,
 				D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */,
 				D025CF8B2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift */,
+				D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */,
 			);
 			path = "Multi-View";
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */,
 				D025CF4D2BD08564007274D9 /* EmojiData.swift in Sources */,
 				D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObjectController.swift in Sources */,
+				D025CF8E2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift in Sources */,
 				D025CF702BD1B26D007274D9 /* MotionManager.swift in Sources */,
 				D025CF5A2BD0A2D6007274D9 /* PopoverBackportViewController.swift in Sources */,
 				D025CF442BD061F6007274D9 /* UserColorView3.swift in Sources */,
