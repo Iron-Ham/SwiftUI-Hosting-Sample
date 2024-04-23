@@ -75,6 +75,11 @@ final class MainMenuViewController: UIViewController {
               title: "Custom `popover_backport` modifier",
               subtitle: "Use the `popover_backport` modifier if your deploy target is less than iOS 16.4",
               viewController: PopoverBackportViewController()
+            ),
+            MenuItem(
+              title: "Why `ObservableObject` should be generally avoided",
+              subtitle: "This example is identical to the `popover_backport` example, with one key difference: It uses an `ObservableObject` declared as a `@StateObject` instead of an `@Observable` or `@Perceptible` view model. In order to view incorrect behavior: select any emoji in the emoji picker. The emoji picker will dismiss and then immediately re-present as the `ObservableObject` will trigger repeated redraws of the `View`.",
+              viewController: IncorrectPopoverBackportViewController()
             )
           ]
         ),
