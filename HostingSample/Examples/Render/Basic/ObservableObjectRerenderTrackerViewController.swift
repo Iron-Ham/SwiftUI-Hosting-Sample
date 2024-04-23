@@ -32,14 +32,12 @@ private struct _View: View {
 
   var body: some View {
     let _ = Self._printChanges()
-    VStack {
-      Text("This text color changes each time it is re-rendered")
-        .foregroundStyle(Color(
-          red: .random(in: 0...1),
-          green: .random(in: 0...1),
-          blue: .random(in: 0...1)
-        ))
-    }
+    Text("This text color changes each time it is re-rendered")
+      .foregroundStyle(Color(
+        red: .random(in: 0...1),
+        green: .random(in: 0...1),
+        blue: .random(in: 0...1)
+      ))
   }
 }
 

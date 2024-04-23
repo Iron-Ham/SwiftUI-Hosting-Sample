@@ -1,15 +1,13 @@
 import SwiftUI
 
-final class ObservableRerenderTrackerViewController: UIViewController {
-  private var viewModel = _View.ViewModel()
-
+final class StateRerenderTrackerViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
     view.backgroundColor = .systemGroupedBackground
 
     let contentView = HostingView {
-      _View(viewModel: viewModel)
+      _View()
     }
 
     let stackView = UIStackView(arrangedSubviews: [UIView(), contentView, UIView()])
@@ -27,7 +25,8 @@ final class ObservableRerenderTrackerViewController: UIViewController {
 }
 
 private struct _View: View {
-  @State var viewModel: ViewModel
+  @State var count = 0
+  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
   var body: some View {
     let _ = Self._printChanges()
@@ -37,22 +36,8 @@ private struct _View: View {
         green: .random(in: 0...1),
         blue: .random(in: 0...1)
       ))
-  }
-}
-
-private extension _View {
-  @Observable final class ViewModel {
-    var someBoolean = false
-    @ObservationIgnored
-    var timer: Timer?
-
-    init() {
-      timer = Timer.scheduledTimer(
-        withTimeInterval: 1,
-        repeats: true
-      ) { _ in
-        self.someBoolean = false
-      }
+    .onReceive(timer) { input in
+      count += 1
     }
   }
 }

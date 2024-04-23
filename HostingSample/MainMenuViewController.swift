@@ -105,6 +105,11 @@ final class MainMenuViewController: UIViewController {
             title: "The `ObservableObject` protocol.",
             subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses the `ObservableObject` protocol instead of `@Observable`. It triggers a full re-render of the view whenever **any** property of the `ObservableObject` changes.",
             viewController: ObservableObjectRerenderTrackerViewController()
+          ),
+          MenuItem(
+            title: "Using `State`",
+            subtitle: "This example contains a `Text` view that sets a random foreground color each render. This example uses `@State` to store an unused integer.",
+            viewController: StateRerenderTrackerViewController()
           )
         ])
       ]

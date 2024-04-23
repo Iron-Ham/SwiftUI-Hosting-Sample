@@ -44,6 +44,7 @@
 		D025CF7A2BD2E1DB007274D9 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF792BD2E1DB007274D9 /* EmojiView.swift */; };
 		D025CF7D2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF7C2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift */; };
 		D025CF812BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF802BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift */; };
+		D025CF852BD8576A007274D9 /* StateUpdatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF842BD8576A007274D9 /* StateUpdatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		D025CF792BD2E1DB007274D9 /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		D025CF7C2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 		D025CF802BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectRerenderTrackerViewController.swift; sourceTree = "<group>"; };
+		D025CF842BD8576A007274D9 /* StateUpdatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUpdatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +273,7 @@
 		D025CF822BD85710007274D9 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				D025CF842BD8576A007274D9 /* StateUpdatingView.swift */,
 				D025CF7C2BD45DD4007274D9 /* ObservableRerenderTrackerViewController.swift */,
 				D025CF802BD84F87007274D9 /* ObservableObjectRerenderTrackerViewController.swift */,
 			);
@@ -368,6 +371,7 @@
 				D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */,
 				D025CF642BD0AF5F007274D9 /* PopoverBackport.swift in Sources */,
 				D025CF722BD1B560007274D9 /* EmojiSelectionCollectionView.swift in Sources */,
+				D025CF852BD8576A007274D9 /* StateUpdatingView.swift in Sources */,
 				D025CF302BD0553B007274D9 /* UserColorView2.swift in Sources */,
 				D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */,
 				D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */,
