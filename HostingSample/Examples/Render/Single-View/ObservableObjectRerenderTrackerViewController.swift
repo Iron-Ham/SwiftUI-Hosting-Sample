@@ -7,12 +7,20 @@ final class ObservableObjectRerenderTrackerViewController: UIViewController {
     super.viewDidLoad()
 
     view.backgroundColor = .systemGroupedBackground
+    title = "The ObservableObject protocol"
 
     let contentView = HostingView {
       _View(viewModel: self.viewModel)
     }
 
-    let stackView = UIStackView(arrangedSubviews: [UIView(), contentView, UIView()])
+    let explanationView = HostingView {
+      Text("Both the view above and this view are set to change color each time they are re-rendered. The mechanism by which this render is triggered is a `Timer`: Every second, an unused `count` variable is incremented.")
+        .foregroundStyle(
+          [Color.blue, .brown, .red, .green, .purple, .orange].shuffled().first ?? .black
+        )
+    }
+
+    let stackView = UIStackView(arrangedSubviews: [UIView(), contentView, UIView(), explanationView, UIView()])
     stackView.axis = .vertical
     stackView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(stackView)
@@ -32,11 +40,7 @@ private struct _View: View {
   var body: some View {
     let _ = Self._printChanges()
     Text("This text color changes each time it is re-rendered")
-      .foregroundStyle(Color(
-        red: .random(in: 0...1),
-        green: .random(in: 0...1),
-        blue: .random(in: 0...1)
-      ))
+      .foregroundStyle(Color.random)
   }
 }
 

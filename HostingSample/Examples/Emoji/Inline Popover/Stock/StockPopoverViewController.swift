@@ -6,7 +6,7 @@ final class StockPopoverViewController: UIViewController {
     super.viewDidLoad()
 
     view.backgroundColor = .systemGroupedBackground
-
+    title = "Stock Popover"
     let contentView = HostingView {
       StockPopoverView()
     }

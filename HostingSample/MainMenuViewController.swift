@@ -134,7 +134,7 @@ final class MainMenuViewController: UIViewController {
             MenuItem(
               title: "Using `@State` and `@Observable`: with `Equatable`",
               subtitle: "Identical to the previous example, but the `ObservablePopoverView` has been given `Equatable` conformance and uses the `.equatable()` modifier. As a result, the `ObservablePopoverView` does not re-render unless its dependencies change.",
-              viewController: MultiViewMixedStateRerenderTrackerViewController()
+              viewController: MultiViewMixedStateWithEquatableRerenderTrackerViewController()
             )
           ]
         )

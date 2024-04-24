@@ -6,6 +6,7 @@ final class PopoverBackportViewController: UIViewController {
     super.viewDidLoad()
 
     view.backgroundColor = .systemGroupedBackground
+    title = "Popover Backport"
 
     let contentView = HostingView {
       PopoverBackportView()

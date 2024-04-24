@@ -47,7 +47,7 @@
 		D025CF852BD8576A007274D9 /* StateRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF842BD8576A007274D9 /* StateRerenderTrackerViewController.swift */; };
 		D025CF882BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF872BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift */; };
 		D025CF8A2BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */; };
-		D025CF8C2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8B2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift */; };
+		D025CF8C2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8B2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift */; };
 		D025CF8E2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +91,7 @@
 		D025CF842BD8576A007274D9 /* StateRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 		D025CF872BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewStateRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 		D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedStateRerenderTrackerVIewController.swift; sourceTree = "<group>"; };
-		D025CF8B2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedState2ViewController.swift; sourceTree = "<group>"; };
+		D025CF8B2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewStateRerenderWithUsedStateTrackerViewController.swift; sourceTree = "<group>"; };
 		D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,7 +294,7 @@
 			children = (
 				D025CF872BD859A7007274D9 /* MultiViewStateRerenderTrackerViewController.swift */,
 				D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */,
-				D025CF8B2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift */,
+				D025CF8B2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift */,
 				D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */,
 			);
 			path = "Multi-View";
@@ -387,7 +387,7 @@
 				D025CF4B2BD084A5007274D9 /* Emoji.swift in Sources */,
 				D025CF142BD03CE9007274D9 /* MainMenuViewController.swift in Sources */,
 				D025CF102BD03CE9007274D9 /* AppDelegate.swift in Sources */,
-				D025CF8C2BD85E53007274D9 /* MultiViewMixedState2ViewController.swift in Sources */,
+				D025CF8C2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift in Sources */,
 				D025CF762BD1B5A5007274D9 /* EmojiParallaxView.swift in Sources */,
 				D025CF422BD061EB007274D9 /* DynamicSwiftUIPerceptibleViewController.swift in Sources */,
 				D025CF352BD055D1007274D9 /* IconPickerProvider.swift in Sources */,

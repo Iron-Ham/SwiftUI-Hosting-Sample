@@ -5,12 +5,20 @@ final class MultiViewMixedStateRerenderTrackerViewController: UIViewController {
     super.viewDidLoad()
 
     view.backgroundColor = .systemGroupedBackground
+    title = "Using @State and @Observable"
 
     let contentView = HostingView {
       _View()
     }
 
-    let stackView = UIStackView(arrangedSubviews: [UIView(), contentView, UIView()])
+    let explanationView = HostingView {
+      Text("Both the view above and this view are set to change color each time they are re-rendered. The mechanism by which this render is triggered is a `Timer`: Every second, a `count` variable is incremented. This `count` variable is in use exclusively by the `Text` which reads \"This `Text` background cycles through a set of known background colors.\"")
+        .foregroundStyle(
+          [Color.blue, .brown, .red, .green, .purple, .orange].shuffled().first ?? .black
+        )
+    }
+
+    let stackView = UIStackView(arrangedSubviews: [UIView(), contentView, UIView(), explanationView, UIView()])
     stackView.axis = .vertical
     stackView.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(stackView)
@@ -32,11 +40,7 @@ private struct _View: View {
   var body: some View {
     VStack {
       Text("This text color changes each time it is re-rendered")
-        .foregroundStyle(Color(
-          red: .random(in: 0...1),
-          green: .random(in: 0...1),
-          blue: .random(in: 0...1)
-        ))
+        .foregroundStyle(Color.random)
 
       ObservablePopoverView()
 
@@ -75,6 +79,8 @@ private struct ObservablePopoverView: View {
           )
           .presentationCompactAdaptation(.popover)
       }
+      .padding()
+      .background(Color.random)
   }
 }
 
@@ -82,10 +88,6 @@ private struct _SubView: View, Equatable {
   var body: some View {
     let _ = Self._printChanges()
     Text("This `subview` `Text` changes color each time it is re-rendered.")
-      .foregroundStyle(Color(
-        red: .random(in: 0...1),
-        green: .random(in: 0...1),
-        blue: .random(in: 0...1)
-      ))
+      .foregroundStyle(Color.random)
   }
 }
