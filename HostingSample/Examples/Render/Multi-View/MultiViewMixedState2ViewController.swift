@@ -57,7 +57,7 @@ private struct _View: View {
         .padding()
         .background(colors[count % colors.count])
     }
-    .onReceive(timer) { input in
+    .onReceive(timer) { _ in
       count += 1
     }
   }

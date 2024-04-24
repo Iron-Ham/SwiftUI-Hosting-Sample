@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// Functions as a "badge" button.
+/// Showcases the selected emoji and shifts color based on whether or not there is an active popover or a selected emoji.
 struct EmojiBadgeView: View {
   @Binding var showEmojiSheet: Bool
   @Binding var selectedEmoji: Emoji?
@@ -7,9 +9,9 @@ struct EmojiBadgeView: View {
 
   private var emojiBadgeColor: Color {
     if showEmojiSheet || selectedEmoji != nil {
-      return .blue
+      .blue
     } else {
-      return .gray
+      .gray
     }
   }
 
@@ -18,13 +20,9 @@ struct EmojiBadgeView: View {
       if let selectedEmoji {
         EmojiView(emoji: selectedEmoji)
       } else {
-        Label {
-          EmptyView()
-        } icon: {
-          Image(systemName: "face.smiling")
-            .resizable()
-            .aspectRatio(1, contentMode: .fit)
-        }.labelStyle(.iconOnly)
+        Image(systemName: "face.smiling")
+          .resizable()
+          .aspectRatio(1, contentMode: .fit)
       }
     }
   }
@@ -41,5 +39,6 @@ struct EmojiBadgeView: View {
       .background(emojiBadgeColor.opacity(0.1))
       .clipShape(rectangle)
       .overlay(rectangle.stroke(emojiBadgeColor.opacity(0.2)))
+      .animation(.easeInOut, value: emojiBadgeColor)
   }
 }

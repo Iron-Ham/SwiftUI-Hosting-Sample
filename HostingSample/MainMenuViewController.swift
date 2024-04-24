@@ -75,7 +75,7 @@ final class MainMenuViewController: UIViewController {
               title: "Custom `popover_backport` modifier",
               subtitle: "Use the `popover_backport` modifier if your deploy target is less than iOS 16.4",
               viewController: PopoverBackportViewController()
-            ),
+            )
           ]
         ),
 
@@ -135,7 +135,7 @@ final class MainMenuViewController: UIViewController {
               title: "Using `@State` and `@Observable`: with `Equatable`",
               subtitle: "Identical to the previous example, but the `ObservablePopoverView` has been given `Equatable` conformance and uses the `.equatable()` modifier. As a result, the `ObservablePopoverView` does not re-render unless its dependencies change.",
               viewController: MultiViewMixedStateRerenderTrackerViewController()
-            ),
+            )
           ]
         )
       ]

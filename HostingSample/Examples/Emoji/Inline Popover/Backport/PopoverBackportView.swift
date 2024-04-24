@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// Presents the `EmojiPopoverCollectionView` using a `popover_backport` modifier. Otherwise identical to the
+/// `StockPopoverView`. 
 struct PopoverBackportView: View {
   @State var showEmojiSheet: Bool = false
   @State var selectedEmoji: Emoji?

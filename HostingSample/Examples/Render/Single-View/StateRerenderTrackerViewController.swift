@@ -36,7 +36,7 @@ private struct _View: View {
         green: .random(in: 0...1),
         blue: .random(in: 0...1)
       ))
-    .onReceive(timer) { input in
+    .onReceive(timer) { _ in
       count += 1
     }
   }

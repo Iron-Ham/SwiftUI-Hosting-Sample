@@ -1,5 +1,6 @@
 import UIKit
 
+/// Contains a `PopoverBackportView`.
 final class PopoverBackportViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()

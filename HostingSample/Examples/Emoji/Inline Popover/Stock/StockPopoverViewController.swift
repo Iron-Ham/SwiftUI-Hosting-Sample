@@ -1,5 +1,6 @@
 import UIKit
 
+/// Contains a `StockPopoverView`.
 final class StockPopoverViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()

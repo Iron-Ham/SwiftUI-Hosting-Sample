@@ -40,7 +40,7 @@ private struct _View: View {
 
       _SubView()
     }
-    .onReceive(timer) { input in
+    .onReceive(timer) { _ in
       count += 1
     }
   }

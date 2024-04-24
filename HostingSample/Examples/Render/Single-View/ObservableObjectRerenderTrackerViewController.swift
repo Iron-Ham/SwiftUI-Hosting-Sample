@@ -26,7 +26,6 @@ final class ObservableObjectRerenderTrackerViewController: UIViewController {
   }
 }
 
-
 private struct _View: View {
   @StateObject var viewModel: ViewModel
 

@@ -1,5 +1,9 @@
 import SwiftUI
 
+/// The `EmojiPopoverCollectionView` is a SwiftUI wrapper around `EmojiCollectionViewController`.
+/// As it's intended for use in a popover, it automatically dismisses the view after selection. Unlike `EmojiSelectionCollectionView`,
+/// it uses the view's internal `UISearchController`, and as a result wraps the `EmojiCollectionViewController` in a
+/// `UINavigationController` to let the component handle its own search state.
 struct EmojiPopoverCollectionView: UIViewControllerRepresentable {
   @Binding var selectedEmoji: Emoji?
   @Environment(\.dismiss) var dismiss

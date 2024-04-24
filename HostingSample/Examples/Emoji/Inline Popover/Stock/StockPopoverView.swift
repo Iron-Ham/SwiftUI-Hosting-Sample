@@ -1,11 +1,13 @@
 import SwiftUI
 
+/// Presents the `EmojiPopoverCollectionView` using a `popover` modifier, with `presentationCompactAdaptation`.
+/// Otherwise identical to the `StockPopoverView`.
 struct StockPopoverView: View {
   @State var showEmojiSheet: Bool = false
   @State var selectedEmoji: Emoji?
 
   var body: some View {
-    let _ = Self._logChanges()
+    let _ = Self._printChanges()
     EmojiBadgeView(showEmojiSheet: $showEmojiSheet, selectedEmoji: $selectedEmoji)
       .accessibilityAddTraits(.isButton)
       .onTapGesture { showEmojiSheet.toggle() }
