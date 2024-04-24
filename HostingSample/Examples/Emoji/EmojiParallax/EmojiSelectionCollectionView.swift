@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// The `EmojiSelectionCollectionView` is a SwiftUI wrapper around `EmojiCollectionViewController`.
+/// It directly displays the `EmojiCollectionViewController`, and allows for updates to its internal properties.
 struct EmojiSelectionCollectionView: UIViewControllerRepresentable {
   @Binding var selectedEmoji: Emoji?
   @Binding var searchText: String?
@@ -21,6 +23,8 @@ struct EmojiSelectionCollectionView: UIViewControllerRepresentable {
 }
 
 extension EmojiSelectionCollectionView {
+  /// The `Coordinator` conforms to the `EmojiCollectionDelegate` protocol and can communicate selected `Emoji`
+  /// values to the stored `Binding<Emoji?>`.
   class Coordinator: EmojiCollectionDelegate {
     var parent: EmojiSelectionCollectionView
 

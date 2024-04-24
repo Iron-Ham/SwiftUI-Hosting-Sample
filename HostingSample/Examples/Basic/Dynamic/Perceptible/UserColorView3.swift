@@ -1,9 +1,8 @@
 import Perception
 import SwiftUI
 
-// Identical to `UserColorView`, but uses a `@Perceptible` for its data model.
-// `@Perceptible` behaves identically to `@Observable`, but is back-ported to earlier versions of iOS.
-// The only consequence of using `@Perceptible` is the need to wrap your view in a `WithPerceptionTracking`.
+/// The `UserColorView3` is identical to its siblings in the `Dynamic` section. This implementation differentiates itself in that it
+/// uses a `@Perceptible` model as opposed to another technique.
 struct UserColorView3: View {
   var viewModel: ViewModel
 
@@ -13,6 +12,8 @@ struct UserColorView3: View {
   }
 
   var body: some View {
+    // As this is using a @Perceptible model, we must use a `WithPerceptionTracking` block in order
+    // to observe on changes within the model.
     WithPerceptionTracking {
       VStack {
         Text("Selected Icon")
@@ -35,6 +36,7 @@ struct UserColorView3: View {
 }
 
 extension UserColorView3 {
+  // Declaring a `@Perceptible` is identical to declaring an `@Observable`.
   @Perceptible
   class ViewModel {
     var selectedIconName: String

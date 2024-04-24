@@ -1,8 +1,7 @@
 import SwiftUI
 
-// Identical to `UserColorView`, but uses an ObservableObject as its data model.
-// The consequence of this is that each update to the observable object triggers multiple times.
-// Set a `Self._printChanges()` in the body variable – or set it in a breakpoint – to view details.
+/// The `UserColorView2` is identical to its siblings in the `Dynamic` section. This implementation differentiates itself in that it
+/// uses an `ObservableObject` as opposed to another technique.
 struct UserColorView2: View {
   @StateObject var viewModel: ViewModel
 

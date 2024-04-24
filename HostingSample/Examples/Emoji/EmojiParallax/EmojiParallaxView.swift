@@ -1,5 +1,8 @@
 import SwiftUI
 
+/// The `EmojiParallaxView` contains both an `EmojiWiggleView` and `EmojiSelectionCollectionView`. The
+/// `EmojiWiggleView` will apply motion to the selected emoji. The `EmojiSelectionCollectionView` facilitates that
+/// selection.
 struct EmojiParallaxView: View {
   @State var viewModel: ViewModel
 

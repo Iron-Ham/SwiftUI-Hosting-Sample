@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// The `UserColorView` is identical to its siblings in the `Dynamic` section. This implementation differentiates itself in that it
+/// uses an `@Observable` model as opposed to another technique.
 struct UserColorView: View {
   @State var viewModel: ViewModel
 

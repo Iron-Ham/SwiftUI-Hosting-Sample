@@ -1,7 +1,9 @@
 import UIKit
 import SwiftUI
 
-// In this example, we showcase using a `HostingView` for SwiftUI content that is dynamic by nature.
+/// The `DynamicSwiftUIViewController` is identical to its sibling view controllers within the `Dynamic`
+/// examples section. This view controller differentiates itself in that its underlying SwiftUI View uses a `@Observable` model
+/// as opposed to another technique.
 final class DynamicSwiftUIViewController: UIViewController {
   private var viewModel: UserColorView.ViewModel
   private let colorProvider = ColorPickerDataProvider()
