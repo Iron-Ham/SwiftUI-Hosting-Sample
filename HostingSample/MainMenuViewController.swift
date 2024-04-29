@@ -182,7 +182,22 @@ final class MainMenuViewController: UIViewController {
               .font(.footnote)
               .foregroundStyle(.secondary)
           }
-        }
+        }.id(item.title.stringKey ?? "")
+        // READER'S NOTE: Why is there a `.id` modifier on this SwiftUI `View`?
+        //
+        // Every SwiftUI `View` needs to have an identifier so the layout system can diff changes in
+        // our layout. This happens automatically for statically defined `View`s, but this is not
+        // possible for arbitrarily sized collections. This is why a `ForEach` block requires either
+        // an `id` key path, or a collection of `Identifiable` models to populate a `View` id.
+        //
+        // When we use a `UIHostingConfiguration`, the SwiftUI View does not know it's hosted in a
+        // collection or table view. When a cell is reused, there's no indication to the `View` that
+        // it is now displaying new and unrelated data. For this reason, we must assign an `id` to
+        // the `View`.
+        //
+        // In this instance, we don't have any information that cannot be instantly re-bound, but
+        // for asynchronously accessed/downloaded info this is especially important, otherwise we
+        // may have the previous content "flash" on-screen for a brief moment before being re-set.
       }
     }
 
@@ -200,6 +215,7 @@ final class MainMenuViewController: UIViewController {
           .foregroundStyle(color)
           .font(.headline)
           .padding(.leading, self.menuItems.contains(menuItem) ? 0 : 8)
+          .id(menuItem.title.stringKey ?? "")
       }
     }
 
