@@ -195,9 +195,9 @@ final class MainMenuViewController: UIViewController {
         // it is now displaying new and unrelated data. For this reason, we must assign an `id` to
         // the `View`.
         //
-        // In this instance, we don't have any information that cannot be instantly re-bound, but
-        // for asynchronously accessed/downloaded info this is especially important, otherwise we
+        // For asynchronously accessed/downloaded info this is especially important, otherwise we
         // may have the previous content "flash" on-screen for a brief moment before being re-set.
+        // This is also true of cells whose content can vary in size.
       }
     }
 
