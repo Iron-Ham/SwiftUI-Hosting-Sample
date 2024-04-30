@@ -139,6 +139,28 @@ final class MainMenuViewController: UIViewController {
           ]
         )
       ]
+    ),
+
+    MenuItem(
+      title: "UIHostingConfiguration",
+      subitems: [
+        MenuItem(
+          title: "UITableView",
+          subitems: [
+            MenuItem(
+              title: "Cell reuse bug",
+              subtitle: "This view doesn't add an `id` modifier to the outer SwiftUI content within the `UIHostingConfiguration`. As a result, we run into cell reuse bugs.",
+              viewController: UserListViewControllerBugged()
+            ),
+
+            MenuItem(
+              title: "Cell reuse bug: fixed",
+              subtitle: "This is identical to the previous examplem, but places an `id` modifier on the outer-most view in the `UIHostingConfiguration`.",
+              viewController: UserListViewController()
+            )
+          ]
+        )
+      ]
     )
   ]
 

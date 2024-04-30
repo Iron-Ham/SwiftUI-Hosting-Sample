@@ -49,6 +49,9 @@
 		D025CF8A2BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */; };
 		D025CF8C2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8B2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift */; };
 		D025CF8E2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */; };
+		D07E7B272BE1900D003C26A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E7B262BE1900D003C26A0 /* User.swift */; };
+		D07E7B292BE190DE003C26A0 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E7B282BE190DE003C26A0 /* UserListViewController.swift */; };
+		D07E7B2B2BE19D85003C26A0 /* UserListViewControllerBugged.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E7B2A2BE19D85003C26A0 /* UserListViewControllerBugged.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		D025CF892BD85B4C007274D9 /* MultiViewMixedStateRerenderTrackerVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedStateRerenderTrackerVIewController.swift; sourceTree = "<group>"; };
 		D025CF8B2BD85E53007274D9 /* MultiViewStateRerenderWithUsedStateTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewStateRerenderWithUsedStateTrackerViewController.swift; sourceTree = "<group>"; };
 		D025CF8D2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift; sourceTree = "<group>"; };
+		D07E7B262BE1900D003C26A0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D07E7B282BE190DE003C26A0 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		D07E7B2A2BE19D85003C26A0 /* UserListViewControllerBugged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerBugged.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 				D025CF452BD083CE007274D9 /* Basic */,
 				D025CF472BD083E6007274D9 /* Emoji */,
 				D025CF7B2BD45DBD007274D9 /* Render */,
+				D07E7B232BE18E8C003C26A0 /* UIHostingConfiguration */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -300,6 +307,32 @@
 			path = "Multi-View";
 			sourceTree = "<group>";
 		};
+		D07E7B232BE18E8C003C26A0 /* UIHostingConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				D07E7B2D2BE19DBF003C26A0 /* Fixed Reuse Bug */,
+				D07E7B2C2BE19DB2003C26A0 /* Reuse Bug */,
+				D07E7B262BE1900D003C26A0 /* User.swift */,
+			);
+			path = UIHostingConfiguration;
+			sourceTree = "<group>";
+		};
+		D07E7B2C2BE19DB2003C26A0 /* Reuse Bug */ = {
+			isa = PBXGroup;
+			children = (
+				D07E7B2A2BE19D85003C26A0 /* UserListViewControllerBugged.swift */,
+			);
+			path = "Reuse Bug";
+			sourceTree = "<group>";
+		};
+		D07E7B2D2BE19DBF003C26A0 /* Fixed Reuse Bug */ = {
+			isa = PBXGroup;
+			children = (
+				D07E7B282BE190DE003C26A0 /* UserListViewController.swift */,
+			);
+			path = "Fixed Reuse Bug";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -394,10 +427,13 @@
 				D025CF642BD0AF5F007274D9 /* PopoverBackport.swift in Sources */,
 				D025CF722BD1B560007274D9 /* EmojiSelectionCollectionView.swift in Sources */,
 				D025CF852BD8576A007274D9 /* StateRerenderTrackerViewController.swift in Sources */,
+				D07E7B292BE190DE003C26A0 /* UserListViewController.swift in Sources */,
 				D025CF302BD0553B007274D9 /* UserColorView2.swift in Sources */,
 				D025CF372BD055D9007274D9 /* ColorPickerProvider.swift in Sources */,
+				D07E7B2B2BE19D85003C26A0 /* UserListViewControllerBugged.swift in Sources */,
 				D025CF492BD083F7007274D9 /* EmojiCollectionViewController.swift in Sources */,
 				D025CF4D2BD08564007274D9 /* EmojiData.swift in Sources */,
+				D07E7B272BE1900D003C26A0 /* User.swift in Sources */,
 				D025CF322BD0557F007274D9 /* DynamicSwiftUIObservableObjectController.swift in Sources */,
 				D025CF8E2BD86600007274D9 /* MultiViewMixedStateWithEquatableRerenderTrackerViewController.swift in Sources */,
 				D025CF702BD1B26D007274D9 /* MotionManager.swift in Sources */,
